@@ -9,9 +9,9 @@
 #include <stdbool.h>
 #include <fcntl.h>
 #include <limits.h>
-// #include "../libft/libft.h"
-// #include "../printf/ft_printf.h"
-// #include "../get_next_line/get_next_line.h"
+#include "../libft/libft.h"
+#include "../printf/ft_printf.h"
+#include "../get_next_line/get_next_line.h"
 
 #define PI 3.14159265
 
@@ -93,20 +93,20 @@ typedef struct s_mlx
 	t_rt		rotate;
 }				t_mlx;
 
-typedef	struct s_va
+typedef	struct s_da
 {
-	float minX;
-	float minY;
-	float maxX;
-	float maxY;		
-}			t_va;
+	float x_min;
+	float y_min;
+	float x_max;
+	float y_max;		
+}			t_da;
 
 
 
-// bool	creat_list(char *cmd, t_map **head);
-// void 	print_list(t_map *h);
+bool	creat_list(char *cmd, t_map **head);
+void 	print_list(t_map *h);
 int		count_arrays(char **str);
-// void	*free_list(t_map **head);
+void	*free_list(t_map **head);
 t_coords	**get_coordinates(t_map *map, t_info_map info_map);
 void	draw_line(void *mlx, void *mlx_win, t_line coords);
 void    aplly_isometric(t_line *line, t_mlx *mlx);
