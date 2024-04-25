@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 21:11:55 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/24 21:49:12 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/25 10:38:15 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,8 +101,6 @@ void    draw_map(t_coords **coords, t_mlx *mlx, t_info_map info)
 				aplly_isometric(&line, mlx);
 				draw_line(mlx->mlx, mlx->mlx_win,line);
 			}
-			// if (j < info.width_map - 1)
-			// 	update_coords(&line, &coords[i][j], &coords[i][j + 1]);
 			j++;
 		}
 		i++;
