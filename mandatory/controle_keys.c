@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:28:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/24 21:46:38 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/25 15:47:44 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,16 @@ void	initialize_rotaion(t_mlx *mlx)
 	mlx->rotate.x = false;
 	mlx->rotate.y = false;
 	mlx->rotate.z = false;
+}
+
+void	initialize_centre(t_da *va)
+{
+	va->x_min = FLT_MAX;
+    va->y_min = FLT_MAX;
+    va->x_max = FLT_MIN;
+    va->y_max = FLT_MIN;
+	va->c_x = 0;
+	va->c_y = 0;
 }
 
 void	manage_moves(t_mlx **mlx, char c)
@@ -108,16 +118,16 @@ int	manage_keys(int key_press, t_mlx *mlx)
 		manage_moves(&mlx, 'p');
 	draw_map(mlx->coords, mlx, mlx->inf);
 	initialize_rotaion(mlx);
-	printf("keys is %d\n", key_press);
+	// printf("keys is %d\n", key_press);
 	return (0);
 }
 
-void	get_centr(t_line line)
+void	get_centr(t_line *line, t_da *va)
 {
-	static t_da va;
-
-	va.x_min = fmin(va.x_min, fmin(line.start_x, line.end_x));
-    va.y_min = fmin(va.y_min, fmin(line.start_y, line.end_y));
-    va.x_max = fmax(va.x_max, fmax(line.start_x, line.end_x));
-    va.y_max = fmax(va.y_max, fmax(line.start_y, line.end_y));
+	va->x_min = fmin(va->x_min, fmin(line->start_x, line->end_x));
+    va->y_min = fmin(va->y_min, fmin(line->start_y, line->end_y));
+    va->x_max = fmax(va->x_max, fmax(line->start_x, line->end_x));
+    va->y_max = fmax(va->y_max, fmax(line->start_y, line->end_y));
+	va->c_x = (va->x_max - va->x_min) / 2.0;
+	va->c_y = (va->y_max - va->y_min) / 2.0;
 }

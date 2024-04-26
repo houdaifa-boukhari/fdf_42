@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 21:11:55 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/25 10:38:15 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/26 20:59:27 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,10 +78,12 @@ t_coords	**get_coordinates(t_map *map, t_info_map info_map)
 void    draw_map(t_coords **coords, t_mlx *mlx, t_info_map info)
 {
 	t_line	line;
+	static t_da	va;
 	int		i;
 	int		j;
 
 	i = 0;
+	initialize_centre(&va);
 	while (i < info.height_map)
 	{
 		j  = 0;
@@ -90,21 +92,24 @@ void    draw_map(t_coords **coords, t_mlx *mlx, t_info_map info)
 			if (j < info.width_map - 1)
 			{
 				assign_values(coords[i][j], coords[i][j + 1], &line, mlx);
-				offset_to_center(&line, mlx);
+				// offset_to_center(&line, mlx);
 				aplly_isometric(&line, mlx);
+				get_centr(&line, &va);
 				draw_line(mlx->mlx, mlx->mlx_win, line);
 			}
 			if (i < info.height_map - 1)
 			{
 				assign_values(coords[i][j], coords[i + 1][j], &line, mlx);
-				offset_to_center(&line, mlx);
+				// offset_to_center(&line, mlx);
 				aplly_isometric(&line, mlx);
+				get_centr(&line, &va);
 				draw_line(mlx->mlx, mlx->mlx_win,line);
 			}
 			j++;
 		}
 		i++;
 	}
+	// printf("max x: %f\nmin x : %f\nmax y : %f\nmin y: %f\ncentr x : %f\ncentre y: %f----------\n", va.x_max, va.x_min, va.y_max, va.y_min, va.c_x, va.c_y);
 }
 
 void	draw_line(void *mlx, void *mlx_win, t_line coords)

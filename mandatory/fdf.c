@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/24 21:49:19 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/25 16:32:27 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ void	assign_values(t_coords coord1, t_coords coord2, t_line *line, t_mlx *mlx)
 	line->end_x = (coord2.x / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom) + mlx->moves.x;
 	line->end_y = (coord2.y / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom) + mlx->moves.y;
 	line->end_z = (coord2.z / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom) + mlx->moves.z;
+	line->end_color = coord2.color;
 	if (mlx->rotate.x || mlx->rotate.y || mlx->rotate.z)
 		rotation(line, mlx);
-	line->end_color = coord2.color;
 }
 
 int main(int argc, char **argv)
@@ -92,6 +92,7 @@ int main(int argc, char **argv)
 		mlx.mlx_win = mlx_new_window(mlx.mlx, info.height_win, info.width_win, "fdf");
 		initialize_moves(&mlx);
 		mlx.coords = coords;
+	
 		draw_map(coords, &mlx, info);
 		mlx_hook(mlx.mlx_win, 17, 0, close_window, &mlx);
 		mlx_key_hook(mlx.mlx_win, manage_keys, &mlx);

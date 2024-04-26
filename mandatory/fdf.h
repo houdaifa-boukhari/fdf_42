@@ -7,6 +7,7 @@
 #include <mlx.h>
 #include <stdlib.h>
 #include <stdbool.h>
+#include <float.h>
 #include <fcntl.h>
 #include <limits.h>
 #include "../libft/libft.h"
@@ -95,24 +96,24 @@ typedef struct s_mlx
 
 typedef	struct s_da
 {
-	float x_min;
-	float y_min;
-	float x_max;
-	float y_max;		
+	float	x_min;
+	float	y_min;
+	float	x_max;
+	float	y_max;
+	float	c_x;
+	float	c_y;	
 }			t_da;
 
 
 
+t_coords	**get_coordinates(t_map *map, t_info_map info_map);
 bool	creat_list(char *cmd, t_map **head);
 void 	print_list(t_map *h);
 int		count_arrays(char **str);
 void	*free_list(t_map **head);
-t_coords	**get_coordinates(t_map *map, t_info_map info_map);
 void	draw_line(void *mlx, void *mlx_win, t_line coords);
-void    aplly_isometric(t_line *line, t_mlx *mlx);
 void	assign_map(t_info_map *map_info, t_map *map);
-int create_gradient(int color1, int color2, double t);
-// void	free_coords(t_coords **coords, t_info_map info);
+int		create_gradient(int color1, int color2, double t);
 int		manage_keys(int key_press, t_mlx *mlx);
 int		close_window(t_mlx *mlx);
 void	initialize_moves(t_mlx *mlx);
@@ -122,4 +123,11 @@ void    offset_to_center(t_line *line, t_mlx *mlx);
 void	manage_moves(t_mlx **mlx, char c);
 void	rotation(t_line *line, t_mlx *mlx);
 void	initialize_rotaion(t_mlx *mlx);
+void	get_centr(t_line *line, t_da *va);
+void	initialize_centre(t_da *va);
+void    aplly_isometric(t_line *line, t_mlx *mlx);
+void	rotation_on_x(t_line *line, t_mlx *mlx, float angle);
+void	rotation_on_z(t_line *line, t_mlx *mlx, float angle);
+void	rotation_on_y(t_line *line, t_mlx *mlx, float angle);
+
 #endif
