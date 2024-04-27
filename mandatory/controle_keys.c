@@ -6,13 +6,13 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:28:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/27 14:40:17 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/27 15:11:42 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-void initialize_moves(t_mlx *mlx)
+void	initialize_moves(t_mlx *mlx)
 {
 	mlx->moves.x = 0;
 	mlx->moves.y = 0;
@@ -24,14 +24,14 @@ void initialize_moves(t_mlx *mlx)
 	initialize_rotaion(mlx);
 }
 
-void initialize_rotaion(t_mlx *mlx)
+void	initialize_rotaion(t_mlx *mlx)
 {
 	mlx->rotate.x = false;
 	mlx->rotate.y = false;
 	mlx->rotate.z = false;
 }
 
-void initialize_centre(t_da *va)
+void	initialize_centre(t_da *va)
 {
 	va->x_min = FLT_MAX;
 	va->y_min = FLT_MAX;
@@ -41,7 +41,7 @@ void initialize_centre(t_da *va)
 	va->c_y = 0;
 }
 
-void manage_moves(t_mlx **mlx, int key)
+void	manage_moves(t_mlx **mlx, int key)
 {
 	if (key == UP)
 		(*mlx)->moves.y -= 15;
@@ -93,13 +93,13 @@ void manage_moves(t_mlx **mlx, int key)
 	}
 }
 
-int close_window(t_mlx *mlx)
+int	close_window(t_mlx *mlx)
 {
 	mlx_destroy_window(mlx->mlx, mlx->mlx_win);
 	exit(0);
 }
 
-int manage_keys(int key_press, t_mlx *mlx)
+int	manage_keys(int key_press, t_mlx *mlx)
 {
 	if (key_press == SHUT_DOWN)
 		close_window(mlx);
@@ -134,7 +134,7 @@ int manage_keys(int key_press, t_mlx *mlx)
 	return (0);
 }
 
-void get_centr(t_line *line, t_da *va)
+void	get_centr(t_line *line, t_da *va)
 {
 	va->x_min = fmin(va->x_min, fmin(line->start_x, line->end_x));
 	va->y_min = fmin(va->y_min, fmin(line->start_y, line->end_y));
