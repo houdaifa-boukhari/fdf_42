@@ -6,15 +6,15 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/27 12:12:57 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/27 15:12:11 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-bool    check_map(t_map *current)
+bool	check_map(t_map *current)
 {
-	int size;
+	int	size;
 
 	if (!current)
 		return (false);
@@ -29,15 +29,15 @@ bool    check_map(t_map *current)
 	return (true);
 }
 
-bool    handle_input(char *file, t_map **map)
+bool	handle_input(char *file, t_map **map)
 {
-	char    *str;
-	int     fd;
+	char	*str;
+	int		fd;
 
 	str = ft_strnstr(file, ".fdf", ft_strlen(file));
 	if (str == NULL || *(str + 4) != '\0')
 		return (false);
-	fd = open(file, O_RDWR ,0644);
+	fd = open(file, O_RDWR, 0644);
 	if (fd < 0)
 	{
 		perror(file);
@@ -53,27 +53,34 @@ bool    handle_input(char *file, t_map **map)
 	return (true);
 }
 
-void	assign_values(t_coords coord1, t_coords coord2, t_line *line, t_mlx *mlx)
+void	assign_values(t_coords coord1, t_coords coord2, t_line *line,
+		t_mlx *mlx)
 {
-	line->start_x = (coord1.x / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom) + mlx->moves.x;
-	line->start_y = (coord1.y / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom) + mlx->moves.y;
-	line->start_z = (coord1.z / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom) + mlx->moves.z;
+	line->start_x = (coord1.x / mlx->inf.zoom) * (mlx->inf.zoom
+			+ mlx->moves.zoom) + mlx->moves.x;
+	line->start_y = (coord1.y / mlx->inf.zoom) * (mlx->inf.zoom
+			+ mlx->moves.zoom) + mlx->moves.y;
+	line->start_z = (coord1.z / mlx->inf.zoom) * (mlx->inf.zoom
+			+ mlx->moves.zoom) + mlx->moves.z;
 	line->start_color = coord1.color;
-	line->end_x = (coord2.x / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom) + mlx->moves.x;
-	line->end_y = (coord2.y / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom) + mlx->moves.y;
-	line->end_z = (coord2.z / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom) + mlx->moves.z;
+	line->end_x = (coord2.x / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom)
+		+ mlx->moves.x;
+	line->end_y = (coord2.y / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom)
+		+ mlx->moves.y;
+	line->end_z = (coord2.z / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom)
+		+ mlx->moves.z;
 	line->end_color = coord2.color;
 	if (mlx->rotate.x || mlx->rotate.y || mlx->rotate.z)
 		rotation(line, mlx);
 }
 
-int main(int argc, char **argv)
+int	main(int argc, char **argv)
 {
-	t_map *map;
-	t_coords **coords;
-	t_info_map info;
-	t_mlx *mlx1;
-	t_mlx mlx;
+	t_map		*map;
+	t_coords	**coords;
+	t_info_map	info;
+	t_mlx		*mlx1;
+	t_mlx		mlx;
 
 	map = NULL;
 	mlx1 = &mlx;
@@ -89,7 +96,8 @@ int main(int argc, char **argv)
 		coords = get_coordinates(map, info);
 		free_list(&map);
 		mlx.mlx = mlx_init();
-		mlx.mlx_win = mlx_new_window(mlx.mlx, info.height_win, info.width_win, "fdf");
+		mlx.mlx_win = mlx_new_window(mlx.mlx, info.height_win, info.width_win,
+				"fdf");
 		initialize_moves(&mlx);
 		mlx.coords = coords;
 		aplly_isometric(coords, &mlx);
