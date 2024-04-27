@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 21:11:55 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/26 20:59:27 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/27 12:11:39 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ int	get_color(char *str)
 	return (color);
 }
 
-t_coords	**get_coordinates(t_map *map, t_info_map info_map)
+t_coords	**get_coordinates(t_map *map, t_info_map inf)
 {
 	t_coords	**coords;
 	int				i;
@@ -46,12 +46,12 @@ t_coords	**get_coordinates(t_map *map, t_info_map info_map)
 
 	i = 0;
 	j = 0;
-	coords = (t_coords **)malloc(sizeof(t_coords *) * info_map.height_map);
+	coords = (t_coords **)malloc(sizeof(t_coords *) * inf.height_map);
 	if (!coords)
 		return (NULL);
-	while (i < info_map.height_map)
+	while (i < inf.height_map)
 	{
-		coords[i] = (t_coords *)malloc(sizeof(t_coords) * info_map.width_map);
+		coords[i] = (t_coords *)malloc(sizeof(t_coords) * inf.width_map);
 		if (!coords[i])
 			return (NULL);
 		i++;
@@ -61,9 +61,9 @@ t_coords	**get_coordinates(t_map *map, t_info_map info_map)
 		i = 0;
 		while (map->map[i])
 		{
-			coords[j][i].x = i * info_map.zoom;
-			coords[j][i].y = j * info_map.zoom;
-			coords[j][i].z = ft_atoi(map->map[i]) * info_map.zoom;
+			coords[j][i].x = i * inf.zoom - ((inf.width_map * inf.zoom) / 2.0);
+			coords[j][i].y = j * inf.zoom - ((inf.height_map * inf.zoom ) / 2.0);
+			coords[j][i].z = ft_atoi(map->map[i]) * inf.zoom;
 			coords[j][i].color = get_color(map->map[i]);
 			i++;
 		}
@@ -92,16 +92,14 @@ void    draw_map(t_coords **coords, t_mlx *mlx, t_info_map info)
 			if (j < info.width_map - 1)
 			{
 				assign_values(coords[i][j], coords[i][j + 1], &line, mlx);
-				// offset_to_center(&line, mlx);
-				aplly_isometric(&line, mlx);
+				offset_to_center(&line, mlx);
 				get_centr(&line, &va);
 				draw_line(mlx->mlx, mlx->mlx_win, line);
 			}
 			if (i < info.height_map - 1)
 			{
 				assign_values(coords[i][j], coords[i + 1][j], &line, mlx);
-				// offset_to_center(&line, mlx);
-				aplly_isometric(&line, mlx);
+				offset_to_center(&line, mlx);
 				get_centr(&line, &va);
 				draw_line(mlx->mlx, mlx->mlx_win,line);
 			}

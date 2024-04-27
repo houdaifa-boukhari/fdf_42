@@ -1,9 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   fdf.h                                              :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
+/*   Updated: 2024/04/27 14:50:04 by hel-bouk         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #ifndef FDF_H
 #define FDF_H
 
 #include <math.h>
 #include <stdio.h>
-// #include "../minilibx_macos/mlx.h"
 #include <mlx.h>
 #include <stdlib.h>
 #include <stdbool.h>
@@ -15,6 +26,20 @@
 #include "../get_next_line/get_next_line.h"
 
 #define PI 3.14159265
+#define UP 13
+#define DOWN 1
+#define LEFT 0
+#define RIGHT 2
+#define ZOOM 69
+#define MINIMIZE 78
+#define ROTATE_X 83
+#define ROTATE_Y 85
+#define ROTATE_Z 87
+#define R_ROTATE_X 84
+#define R_ROTATE_Y 86
+#define R_ROTATE_Z 88
+#define SHUT_DOWN 53
+
 
 
 typedef struct s_map
@@ -81,7 +106,9 @@ typedef	struct s_rotation
 	bool	x;
 	bool	y;
 	bool	z;
-	float	angle;
+	float	angle_x;
+	float	angle_y;
+	float	angle_z;
 }			t_rt;
 
 typedef struct s_mlx
@@ -120,12 +147,12 @@ void	initialize_moves(t_mlx *mlx);
 void    draw_map(t_coords **coords, t_mlx *mlx, t_info_map info);
 void	assign_values(t_coords coord1, t_coords coord2, t_line *line, t_mlx *mlx);
 void    offset_to_center(t_line *line, t_mlx *mlx);
-void	manage_moves(t_mlx **mlx, char c);
+void	manage_moves(t_mlx **mlx, int key);
 void	rotation(t_line *line, t_mlx *mlx);
 void	initialize_rotaion(t_mlx *mlx);
 void	get_centr(t_line *line, t_da *va);
 void	initialize_centre(t_da *va);
-void    aplly_isometric(t_line *line, t_mlx *mlx);
+void    aplly_isometric(t_coords **coord, t_mlx *mlx);
 void	rotation_on_x(t_line *line, t_mlx *mlx, float angle);
 void	rotation_on_z(t_line *line, t_mlx *mlx, float angle);
 void	rotation_on_y(t_line *line, t_mlx *mlx, float angle);

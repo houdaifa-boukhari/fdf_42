@@ -1,7 +1,7 @@
 NAME = fdf
 HEADER = fdf.h
 SRC = ./mandatory/fdf.c ./mandatory/controle_keys.c ./mandatory/get_coords.c ./mandatory/tools.list.c ./mandatory/draw_utilize.c \
-	get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+	./mandatory/rotation_utlize.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 OBJS = $(SRC:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Imlx -fsanitize=address

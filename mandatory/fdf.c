@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/25 16:32:27 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/27 12:12:57 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,7 @@ int main(int argc, char **argv)
 		mlx.mlx_win = mlx_new_window(mlx.mlx, info.height_win, info.width_win, "fdf");
 		initialize_moves(&mlx);
 		mlx.coords = coords;
-	
+		aplly_isometric(coords, &mlx);
 		draw_map(coords, &mlx, info);
 		mlx_hook(mlx.mlx_win, 17, 0, close_window, &mlx);
 		mlx_key_hook(mlx.mlx_win, manage_keys, &mlx);
