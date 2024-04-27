@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/27 14:50:04 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/27 14:54:46 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -153,8 +153,8 @@ void	initialize_rotaion(t_mlx *mlx);
 void	get_centr(t_line *line, t_da *va);
 void	initialize_centre(t_da *va);
 void    aplly_isometric(t_coords **coord, t_mlx *mlx);
-void	rotation_on_x(t_line *line, t_mlx *mlx, float angle);
-void	rotation_on_z(t_line *line, t_mlx *mlx, float angle);
-void	rotation_on_y(t_line *line, t_mlx *mlx, float angle);
+void	rotation_on_x(t_line *line, float angle);
+void	rotation_on_z(t_line *line, float angle);
+void	rotation_on_y(t_line *line, float angle);
 
 #endif
