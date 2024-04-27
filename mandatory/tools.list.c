@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 21:12:05 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/17 22:13:37 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/27 15:09:53 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,20 +34,7 @@ bool	creat_list(char *cmd, t_map **head)
 	while (ptr->next)
 		ptr = ptr->next;
 	ptr->next = cmds;
-    return (true);
-}
-
-
-void  print_list(t_map *h)
-{
-    int i = 0;
-	while (h)
-	{
-        i  = 0;
-        while (h->map[i])
-		    printf("%s ", h->map[i++]);
-		h = h->next;
-	}
+	return (true);
 }
 
 void	*free_list(t_map **head)

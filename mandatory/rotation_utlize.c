@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 11:01:32 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/27 14:56:52 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/27 15:05:12 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,6 @@
 
 void	aplly_isometric(t_coords **coord, t_mlx *mlx)
 {
-	float	tmp_y;
 	float	tmp_x;
 	int		i;
 	int		j;
@@ -26,14 +25,16 @@ void	aplly_isometric(t_coords **coord, t_mlx *mlx)
 		while (j < mlx->inf.width_map)
 		{
 			tmp_x = coord[i][j].x;
-			tmp_y = coord[i][j].y;
-			coord[i][j].x = tmp_x * cos(mlx->rotate.angle_z) - tmp_y * sin(mlx->rotate.angle_z);
-			coord[i][j].y = tmp_y * cos(mlx->rotate.angle_z) + tmp_x * sin(mlx->rotate.angle_z);
+			coord[i][j].x = tmp_x * cos(mlx->rotate.angle_z) - coord[i][j].y
+				* sin(mlx->rotate.angle_z);
+			coord[i][j].y = coord[i][j].y * cos(mlx->rotate.angle_z) + tmp_x
+				* sin(mlx->rotate.angle_z);
 			tmp_x = coord[i][j].x;
-			tmp_y = coord[i][j].y;
 			coord[i][j].x = tmp_x;
-			coord[i][j].y = tmp_y * cos( mlx->rotate.angle_x) - coord[i][j].z * sin(mlx->rotate.angle_x);
-			coord[i][j].z = tmp_y * sin( mlx->rotate.angle_x) + coord[i][j].z * cos(mlx->rotate.angle_x);
+			coord[i][j].y = coord[i][j].y * cos(mlx->rotate.angle_x)
+				- coord[i][j].z * sin(mlx->rotate.angle_x);
+			coord[i][j].z = coord[i][j].y * sin(mlx->rotate.angle_x)
+				+ coord[i][j].z * cos(mlx->rotate.angle_x);
 			j++;
 		}
 		i++;
