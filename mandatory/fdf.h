@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/27 15:18:43 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/28 09:37:54 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,10 +23,6 @@
 # include <mlx.h>
 # include <stdbool.h>
 # include <stdio.h>
-# include <stdlib.h>
-
-# define PI 3.14159265
-# define UP 13
 # define DOWN 1
 # define LEFT 0
 # define RIGHT 2

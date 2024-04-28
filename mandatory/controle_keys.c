@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:28:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/27 15:24:47 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/27 15:27:32 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -129,7 +129,7 @@ int	manage_keys(int key_press, t_mlx *mlx)
 	else if (key_press == R_ROTATE_Z)
 		manage_moves(&mlx, R_ROTATE_Z);
 	draw_map(mlx->coords, mlx, mlx->inf);
-	initialize_rotaion(mlx);
+	// initialize_rotaion(mlx);
 	// printf("keys is %d\n", key_press);
 	return (0);
 }

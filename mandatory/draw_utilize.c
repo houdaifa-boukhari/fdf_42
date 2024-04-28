@@ -6,16 +6,15 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 21:11:55 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/27 12:11:39 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/27 15:39:44 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-
 #include "fdf.h"
 
-int count_arrays(char **str)
+int	count_arrays(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
@@ -41,8 +40,8 @@ int	get_color(char *str)
 t_coords	**get_coordinates(t_map *map, t_info_map inf)
 {
 	t_coords	**coords;
-	int				i;
-	int				j;
+	int			i;
+	int			j;
 
 	i = 0;
 	j = 0;
@@ -62,7 +61,7 @@ t_coords	**get_coordinates(t_map *map, t_info_map inf)
 		while (map->map[i])
 		{
 			coords[j][i].x = i * inf.zoom - ((inf.width_map * inf.zoom) / 2.0);
-			coords[j][i].y = j * inf.zoom - ((inf.height_map * inf.zoom ) / 2.0);
+			coords[j][i].y = j * inf.zoom - ((inf.height_map * inf.zoom) / 2.0);
 			coords[j][i].z = ft_atoi(map->map[i]) * inf.zoom;
 			coords[j][i].color = get_color(map->map[i]);
 			i++;
@@ -73,20 +72,18 @@ t_coords	**get_coordinates(t_map *map, t_info_map inf)
 	return (coords);
 }
 
-
-
-void    draw_map(t_coords **coords, t_mlx *mlx, t_info_map info)
+void	draw_map(t_coords **coords, t_mlx *mlx, t_info_map info)
 {
-	t_line	line;
+	t_line		line;
 	static t_da	va;
-	int		i;
-	int		j;
+	int			i;
+	int			j;
 
 	i = 0;
 	initialize_centre(&va);
 	while (i < info.height_map)
 	{
-		j  = 0;
+		j = 0;
 		while (j < info.width_map)
 		{
 			if (j < info.width_map - 1)
@@ -101,20 +98,19 @@ void    draw_map(t_coords **coords, t_mlx *mlx, t_info_map info)
 				assign_values(coords[i][j], coords[i + 1][j], &line, mlx);
 				offset_to_center(&line, mlx);
 				get_centr(&line, &va);
-				draw_line(mlx->mlx, mlx->mlx_win,line);
+				draw_line(mlx->mlx, mlx->mlx_win, line);
 			}
 			j++;
 		}
 		i++;
 	}
-	// printf("max x: %f\nmin x : %f\nmax y : %f\nmin y: %f\ncentr x : %f\ncentre y: %f----------\n", va.x_max, va.x_min, va.y_max, va.y_min, va.c_x, va.c_y);
 }
 
 void	draw_line(void *mlx, void *mlx_win, t_line coords)
 {
 	t_data	var;
 	int		j;
-	int     new_color;
+	int		new_color;
 
 	j = 0;
 	var.var_x = coords.end_x - coords.start_x;
@@ -131,8 +127,10 @@ void	draw_line(void *mlx, void *mlx_win, t_line coords)
 	{
 		var.inc_x += var.var_x;
 		var.inc_y += var.var_y;
-		new_color = create_gradient(coords.start_color, coords.end_color, (float)j / var.steps);
-		mlx_pixel_put(mlx, mlx_win, round(var.inc_x) , round(var.inc_y), new_color);
+		new_color = create_gradient(coords.start_color, coords.end_color,
+				(float)j / var.steps);
+		mlx_pixel_put(mlx, mlx_win, round(var.inc_x), round(var.inc_y),
+			new_color);
 		j++;
 	}
 }
