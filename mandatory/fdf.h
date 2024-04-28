@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/28 09:37:54 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/28 09:52:12 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@
 # include <mlx.h>
 # include <stdbool.h>
 # include <stdio.h>
+# define PI 3.14159265
+# define UP 13
 # define DOWN 1
 # define LEFT 0
 # define RIGHT 2
@@ -149,5 +151,6 @@ void				aplly_isometric(t_coords **coord, t_mlx *mlx);
 void				rotation_on_x(t_line *line, float angle);
 void				rotation_on_z(t_line *line, float angle);
 void				rotation_on_y(t_line *line, float angle);
+void				handle_keys_rotation(t_mlx **mlx, int key);
 
 #endif

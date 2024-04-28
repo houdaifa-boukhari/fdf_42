@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:28:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/27 15:27:32 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/28 09:59:04 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,42 +55,6 @@ void	manage_moves(t_mlx **mlx, int key)
 		(*mlx)->moves.zoom += 1;
 	else if (key == MINIMIZE && ((*mlx)->moves.zoom * -1) < (*mlx)->inf.zoom - 1)
 		(*mlx)->moves.zoom -= 1;
-	else if (key == ROTATE_X || key == ROTATE_Y || key == ROTATE_Z)
-	{
-		if (key == ROTATE_X)
-		{
-			(*mlx)->rotate.x = true;
-			(*mlx)->rotate.angle_x += 5 * (PI / 180);
-		}
-		else if (key == ROTATE_Y)
-		{
-			(*mlx)->rotate.y = true;
-			(*mlx)->rotate.angle_y += 5 * (PI / 180);
-		}
-		else if (key == ROTATE_Z)
-		{
-			(*mlx)->rotate.z = true;
-			(*mlx)->rotate.angle_z += 5 * (PI / 180);
-		}
-	}
-	else if (key == R_ROTATE_X || key == R_ROTATE_Y || key == R_ROTATE_Z)
-	{
-		if (key == R_ROTATE_X)
-		{
-			(*mlx)->rotate.x = true;
-			(*mlx)->rotate.angle_x -= 5 * (PI / 180);
-		}
-		else if (key == R_ROTATE_Y)
-		{
-			(*mlx)->rotate.y = true;
-			(*mlx)->rotate.angle_y -= 5 * (PI / 180);
-		}
-		else if (key == R_ROTATE_Z)
-		{
-			(*mlx)->rotate.z = true;
-			(*mlx)->rotate.angle_z -= 5 * (PI / 180);
-		}
-	}
 }
 
 int	close_window(t_mlx *mlx)
@@ -116,22 +80,45 @@ int	manage_keys(int key_press, t_mlx *mlx)
 		manage_moves(&mlx, ZOOM);
 	else if (key_press == MINIMIZE)
 		manage_moves(&mlx, MINIMIZE);
-	else if (key_press == ROTATE_X)
-		manage_moves(&mlx, ROTATE_X);
-	else if (key_press == ROTATE_Y)
-		manage_moves(&mlx, ROTATE_Y);
-	else if (key_press == ROTATE_Z)
-		manage_moves(&mlx, ROTATE_Z);
-	else if (key_press == R_ROTATE_X)
-		manage_moves(&mlx, R_ROTATE_X);
-	else if (key_press == R_ROTATE_Y)
-		manage_moves(&mlx, R_ROTATE_Y);
-	else if (key_press == R_ROTATE_Z)
-		manage_moves(&mlx, R_ROTATE_Z);
+	else
+		handle_keys_rotation(&mlx, key_press);
 	draw_map(mlx->coords, mlx, mlx->inf);
-	// initialize_rotaion(mlx);
-	// printf("keys is %d\n", key_press);
 	return (0);
+}
+
+void	handle_keys_rotation(t_mlx **mlx, int key)
+{
+	if (key == ROTATE_X)
+	{
+		(*mlx)->rotate.x = true;
+		(*mlx)->rotate.angle_x += 5 * (PI / 180);
+	}
+	if (key == ROTATE_Y)
+	{
+		(*mlx)->rotate.y = true;
+		(*mlx)->rotate.angle_y += 5 * (PI / 180);
+	}
+	if (key == ROTATE_Z)
+	{
+		(*mlx)->rotate.z = true;
+		(*mlx)->rotate.angle_z += 5 * (PI / 180);
+	}
+	if (key == R_ROTATE_X)
+	{
+		(*mlx)->rotate.x = true;
+		(*mlx)->rotate.angle_x -= 5 * (PI / 180);
+	}
+	if (key == R_ROTATE_Y)
+	{
+		(*mlx)->rotate.y = true;
+		(*mlx)->rotate.angle_y -= 5 * (PI / 180);
+	}
+	if (key == R_ROTATE_Z)
+	{
+		(*mlx)->rotate.z = true;
+		(*mlx)->rotate.angle_z -= 5 * (PI / 180);
+	}
+	// initialize_rotaion(*mlx);
 }
 
 void	get_centr(t_line *line, t_da *va)
