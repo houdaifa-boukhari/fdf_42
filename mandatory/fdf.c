@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/27 15:12:11 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:18:56 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,14 +76,10 @@ void	assign_values(t_coords coord1, t_coords coord2, t_line *line,
 
 int	main(int argc, char **argv)
 {
-	t_map		*map;
-	t_coords	**coords;
-	t_info_map	info;
-	t_mlx		*mlx1;
-	t_mlx		mlx;
+	t_map	*map;
+	t_mlx	mlx;
 
 	map = NULL;
-	mlx1 = &mlx;
 	if (argc == 2)
 	{
 		if (handle_input(argv[1], &map) == false)
@@ -91,17 +87,15 @@ int	main(int argc, char **argv)
 			ft_putstr_fd("Error\n", STDERR_FILENO);
 			exit(EXIT_FAILURE);
 		}
-		assign_map(&info, map);
-		mlx.inf = info;
-		coords = get_coordinates(map, info);
+		assign_map(&mlx.inf, map);
+		mlx.coords = get_coordinates(map, mlx.inf);
 		free_list(&map);
 		mlx.mlx = mlx_init();
-		mlx.mlx_win = mlx_new_window(mlx.mlx, info.height_win, info.width_win,
-				"fdf");
+		mlx.mlx_win = mlx_new_window(mlx.mlx, mlx.inf.height_win,
+				mlx.inf.width_win, "fdf");
 		initialize_moves(&mlx);
-		mlx.coords = coords;
-		aplly_isometric(coords, &mlx);
-		draw_map(coords, &mlx, info);
+		aplly_isometric(mlx.coords, &mlx);
+		draw_map(mlx.coords, &mlx, mlx.inf);
 		mlx_hook(mlx.mlx_win, 17, 0, close_window, &mlx);
 		mlx_key_hook(mlx.mlx_win, manage_keys, &mlx);
 		mlx_loop(mlx.mlx);

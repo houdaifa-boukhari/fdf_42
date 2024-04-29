@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 21:11:55 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/27 15:39:44 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/29 10:38:24 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,12 @@ int	get_color(char *str)
 	return (color);
 }
 
-t_coords	**get_coordinates(t_map *map, t_info_map inf)
+t_coords	**allocate_coords(t_info inf)
 {
-	t_coords	**coords;
+    t_coords	**coords;
 	int			i;
-	int			j;
 
 	i = 0;
-	j = 0;
 	coords = (t_coords **)malloc(sizeof(t_coords *) * inf.height_map);
 	if (!coords)
 		return (NULL);
@@ -55,6 +53,17 @@ t_coords	**get_coordinates(t_map *map, t_info_map inf)
 			return (NULL);
 		i++;
 	}
+	return (coords);
+}
+
+t_coords	**get_coordinates(t_map *map, t_info inf)
+{
+	t_coords	**coords;
+	int			i;
+	int			j;
+
+	j = 0;
+	coords = allocate_coords(inf);
 	while (map)
 	{
 		i = 0;
@@ -72,16 +81,14 @@ t_coords	**get_coordinates(t_map *map, t_info_map inf)
 	return (coords);
 }
 
-void	draw_map(t_coords **coords, t_mlx *mlx, t_info_map info)
+void	draw_map(t_coords **coords, t_mlx *mlx, t_info info)
 {
 	t_line		line;
-	static t_da	va;
 	int			i;
 	int			j;
 
-	i = 0;
-	initialize_centre(&va);
-	while (i < info.height_map)
+	i = -1;
+	while (++i < info.height_map)
 	{
 		j = 0;
 		while (j < info.width_map)
@@ -90,19 +97,16 @@ void	draw_map(t_coords **coords, t_mlx *mlx, t_info_map info)
 			{
 				assign_values(coords[i][j], coords[i][j + 1], &line, mlx);
 				offset_to_center(&line, mlx);
-				get_centr(&line, &va);
 				draw_line(mlx->mlx, mlx->mlx_win, line);
 			}
 			if (i < info.height_map - 1)
 			{
 				assign_values(coords[i][j], coords[i + 1][j], &line, mlx);
 				offset_to_center(&line, mlx);
-				get_centr(&line, &va);
 				draw_line(mlx->mlx, mlx->mlx_win, line);
 			}
 			j++;
 		}
-		i++;
 	}
 }
 
