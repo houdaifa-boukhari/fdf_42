@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.h                                              :+:      :+:    :+:   */
+/*   fdf_bonus.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/29 12:44:42 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:25:25 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FDF_H
-# define FDF_H
+#ifndef FDF_BONUS_H
+# define FDF_BONUS_H
 
 # include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
@@ -23,6 +23,18 @@
 # include <stdbool.h>
 # include <stdio.h>
 # define PI 3.14159265
+# define UP 13
+# define DOWN 1
+# define LEFT 0
+# define RIGHT 2
+# define ZOOM 69
+# define MINIMIZE 78
+# define ROTATE_X 83
+# define ROTATE_Y 85
+# define ROTATE_Z 87
+# define R_ROTATE_X 84
+# define R_ROTATE_Y 86
+# define R_ROTATE_Z 88
 # define SHUT_DOWN 53
 
 typedef struct s_map
@@ -76,9 +88,21 @@ typedef struct s_colors
 	int	b;
 }		t_colors;
 
+typedef struct s_moves
+{
+	float	x;
+	float	y;
+	float	z;
+	float	zoom;
+}			t_moves;
+
 typedef struct s_rotation
 {
+	bool	x;
+	bool	y;
+	bool	z;
 	float	angle_x;
+	float	angle_y;
 	float	angle_z;
 }			t_rt;
 
@@ -88,6 +112,7 @@ typedef struct s_mlx
 	void			*mlx_win;
 	t_coords		**coords;
 	t_info			inf;
+	t_moves			moves;
 	t_rt			rotate;
 }					t_mlx;
 
@@ -103,11 +128,15 @@ int			close_window(t_mlx *mlx);
 void		initialize_moves(t_mlx *mlx);
 void		draw_map(t_coords **coords, t_mlx *mlx, t_info info);
 void		assign_values(t_coords coord1, t_coords coord2,
-				t_line *line);
+				t_line *line, t_mlx *mlx);
 void		offset_to_center(t_line *line, t_mlx *mlx);
 void		manage_moves(t_mlx **mlx, int key);
 void		rotation(t_line *line, t_mlx *mlx);
+void		initialize_rotaion(t_mlx *mlx);
 void		aplly_isometric(t_coords **coord, t_mlx *mlx);	
+void		rotation_on_x(t_line *line, float angle);
+void		rotation_on_z(t_line *line, float angle);
+void		rotation_on_y(t_line *line, float angle);
 void		handle_keys_rotation(t_mlx **mlx, int key);
 int			get_color(char *str);
 

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   fdf.c                                              :+:      :+:    :+:   */
+/*   fdf_bonus.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/29 12:50:22 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:25:06 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 bool	check_map(t_map *current)
 {
@@ -53,16 +53,25 @@ bool	handle_input(char *file, t_map **map)
 	return (true);
 }
 
-void	assign_values(t_coords coord1, t_coords coord2, t_line *line)
+void	assign_values(t_coords coord1, t_coords coord2, t_line *line,
+		t_mlx *mlx)
 {
-	line->start_x = coord1.x;
-	line->start_y = coord1.y;
-	line->start_z = coord1.z;
+	line->start_x = (coord1.x / mlx->inf.zoom) * (mlx->inf.zoom
+			+ mlx->moves.zoom) + mlx->moves.x;
+	line->start_y = (coord1.y / mlx->inf.zoom) * (mlx->inf.zoom
+			+ mlx->moves.zoom) + mlx->moves.y;
+	line->start_z = (coord1.z / mlx->inf.zoom) * (mlx->inf.zoom
+			+ mlx->moves.zoom) + mlx->moves.z;
 	line->start_color = coord1.color;
-	line->end_x = coord2.x ;
-	line->end_y = coord2.y;
-	line->end_z = coord2.z;
+	line->end_x = (coord2.x / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom)
+		+ mlx->moves.x;
+	line->end_y = (coord2.y / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom)
+		+ mlx->moves.y;
+	line->end_z = (coord2.z / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom)
+		+ mlx->moves.z;
 	line->end_color = coord2.color;
+	if (mlx->rotate.x || mlx->rotate.y || mlx->rotate.z)
+		rotation(line, mlx);
 }
 
 int	get_color(char *str)

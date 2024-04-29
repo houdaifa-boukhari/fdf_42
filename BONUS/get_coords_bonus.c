@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_coords.c                                       :+:      :+:    :+:   */
+/*   get_coords_bonus.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 18:26:29 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/29 12:44:19 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:25:02 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 int	create_gradient(int color1, int color2, double position)
 {
@@ -49,7 +49,19 @@ void	offset_to_center(t_line *line, t_mlx *mlx)
 
 void	initialize_moves(t_mlx *mlx)
 {
+	mlx->moves.x = 0;
+	mlx->moves.y = 0;
+	mlx->moves.z = 0;
+	mlx->moves.zoom = 0;
 	mlx->rotate.angle_x = atan(sqrt(2.0));
+	mlx->rotate.angle_y = 0;
 	mlx->rotate.angle_z = -45.0 * (PI / 180.0);
+	initialize_rotaion(mlx);
 }
 
+void	initialize_rotaion(t_mlx *mlx)
+{
+	mlx->rotate.x = false;
+	mlx->rotate.y = false;
+	mlx->rotate.z = false;
+}

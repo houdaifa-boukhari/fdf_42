@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_utilize.c                                     :+:      :+:    :+:   */
+/*   draw_utilize_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 21:11:55 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/29 12:43:08 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:25:09 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "fdf.h"
+#include "fdf_bonus.h"
 
 int	count_arrays(char **str)
 {
@@ -82,13 +82,13 @@ void	draw_map(t_coords **coords, t_mlx *mlx, t_info info)
 		{
 			if (j < info.width_map - 1)
 			{
-				assign_values(coords[i][j], coords[i][j + 1], &line);
+				assign_values(coords[i][j], coords[i][j + 1], &line, mlx);
 				offset_to_center(&line, mlx);
 				draw_line(mlx->mlx, mlx->mlx_win, line);
 			}
 			if (i < info.height_map - 1)
 			{
-				assign_values(coords[i][j], coords[i + 1][j], &line);
+				assign_values(coords[i][j], coords[i + 1][j], &line, mlx);
 				offset_to_center(&line, mlx);
 				draw_line(mlx->mlx, mlx->mlx_win, line);
 			}
