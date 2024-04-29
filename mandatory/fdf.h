@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/29 12:44:42 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/29 13:02:32 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,13 +102,10 @@ int			manage_keys(int key_press, t_mlx *mlx);
 int			close_window(t_mlx *mlx);
 void		initialize_moves(t_mlx *mlx);
 void		draw_map(t_coords **coords, t_mlx *mlx, t_info info);
+void		offset_to_center(t_line *line, t_mlx *mlx);
+void		aplly_isometric(t_coords **coord, t_mlx *mlx);	
+int			get_color(char *str);
 void		assign_values(t_coords coord1, t_coords coord2,
 				t_line *line);
-void		offset_to_center(t_line *line, t_mlx *mlx);
-void		manage_moves(t_mlx **mlx, int key);
-void		rotation(t_line *line, t_mlx *mlx);
-void		aplly_isometric(t_coords **coord, t_mlx *mlx);	
-void		handle_keys_rotation(t_mlx **mlx, int key);
-int			get_color(char *str);
 
 #endif
