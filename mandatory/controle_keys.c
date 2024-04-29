@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:28:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/29 10:28:50 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:11:54 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,26 +69,27 @@ void	handle_rotate_x(t_mlx **mlx, int key)
 
 void	handle_keys_rotation(t_mlx **mlx, int key)
 {
-	handle_rotate_x(mlx, key);
-	if (key == ROTATE_Z)
+	if (key == ROTATE_X || key == R_ROTATE_X)
+		handle_rotate_x(mlx, key);
+	else if (key == ROTATE_Z)
 	{
 		(*mlx)->rotate.z = true;
 		(*mlx)->rotate.angle_z += 5 * (PI / 180);
-	}
-	else if (key == R_ROTATE_X)
-	{
-		(*mlx)->rotate.x = true;
-		(*mlx)->rotate.angle_x -= 5 * (PI / 180);
-	}
-	if (key == R_ROTATE_Y)
-	{
-		(*mlx)->rotate.y = true;
-		(*mlx)->rotate.angle_y -= 5 * (PI / 180);
 	}
 	else if (key == R_ROTATE_Z)
 	{
 		(*mlx)->rotate.z = true;
 		(*mlx)->rotate.angle_z -= 5 * (PI / 180);
+	}
+	if (key == ROTATE_Y)
+	{
+		(*mlx)->rotate.y = true;
+		(*mlx)->rotate.angle_y += 5 * (PI / 180);
+	}
+	else if (key == R_ROTATE_Y)
+	{
+		(*mlx)->rotate.y = true;
+		(*mlx)->rotate.angle_y -= 5 * (PI / 180);
 	}
 	draw_map((*mlx)->coords, *mlx, (*mlx)->inf);
 	initialize_rotaion(*mlx);

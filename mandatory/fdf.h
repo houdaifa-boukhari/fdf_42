@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/29 10:37:16 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:16:42 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -111,32 +111,33 @@ typedef struct s_mlx
 	void			*mlx;
 	void			*mlx_win;
 	t_coords		**coords;
-	t_info		inf;
+	t_info			inf;
 	t_moves			moves;
 	t_rt			rotate;
 }					t_mlx;
 
-t_coords			**get_coordinates(t_map *map, t_info info_map);
-bool				creat_list(char *cmd, t_map **head);
-int					count_arrays(char **str);
-void				*free_list(t_map **head);
-void				draw_line(void *mlx, void *mlx_win, t_line coords);
-void				assign_map(t_info *map_info, t_map *map);
-int					create_gradient(int color1, int color2, double t);
-int					manage_keys(int key_press, t_mlx *mlx);
-int					close_window(t_mlx *mlx);
-void				initialize_moves(t_mlx *mlx);
-void				draw_map(t_coords **coords, t_mlx *mlx, t_info info);
-void				assign_values(t_coords coord1, t_coords coord2,
-						t_line *line, t_mlx *mlx);
-void				offset_to_center(t_line *line, t_mlx *mlx);
-void				manage_moves(t_mlx **mlx, int key);
-void				rotation(t_line *line, t_mlx *mlx);
-void				initialize_rotaion(t_mlx *mlx);
-void				aplly_isometric(t_coords **coord, t_mlx *mlx);
-void				rotation_on_x(t_line *line, float angle);
-void				rotation_on_z(t_line *line, float angle);
-void				rotation_on_y(t_line *line, float angle);
-void				handle_keys_rotation(t_mlx **mlx, int key);
+t_coords	**get_coordinates(t_map *map, t_info info_map);
+bool		creat_list(char *cmd, t_map **head);
+int			count_arrays(char **str);
+void		*free_list(t_map **head);
+void		draw_line(void *mlx, void *mlx_win, t_line coords);
+void		assign_map(t_info *map_info, t_map *map);
+int			create_gradient(int color1, int color2, double t);
+int			manage_keys(int key_press, t_mlx *mlx);
+int			close_window(t_mlx *mlx);
+void		initialize_moves(t_mlx *mlx);
+void		draw_map(t_coords **coords, t_mlx *mlx, t_info info);
+void		assign_values(t_coords coord1, t_coords coord2,
+				t_line *line, t_mlx *mlx);
+void		offset_to_center(t_line *line, t_mlx *mlx);
+void		manage_moves(t_mlx **mlx, int key);
+void		rotation(t_line *line, t_mlx *mlx);
+void		initialize_rotaion(t_mlx *mlx);
+void		aplly_isometric(t_coords **coord, t_mlx *mlx);	
+void		rotation_on_x(t_line *line, float angle);
+void		rotation_on_z(t_line *line, float angle);
+void		rotation_on_y(t_line *line, float angle);
+void		handle_keys_rotation(t_mlx **mlx, int key);
+int			get_color(char *str);
 
 #endif

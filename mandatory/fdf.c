@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/29 10:18:56 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:14:01 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,19 @@ void	assign_values(t_coords coord1, t_coords coord2, t_line *line,
 	line->end_color = coord2.color;
 	if (mlx->rotate.x || mlx->rotate.y || mlx->rotate.z)
 		rotation(line, mlx);
+}
+
+int	get_color(char *str)
+{
+	int		color;
+	char	*new;
+
+	new = ft_strchr(str, ',');
+	if (new)
+		color = hexa_to_int(new + 3);
+	else
+		return (0xFFFFFF);
+	return (color);
 }
 
 int	main(int argc, char **argv)

@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 21:11:55 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/29 10:38:24 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/29 11:13:53 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,22 +24,9 @@ int	count_arrays(char **str)
 	return (i);
 }
 
-int	get_color(char *str)
-{
-	int		color;
-	char	*new;
-
-	new = ft_strchr(str, ',');
-	if (new)
-		color = hexa_to_int(new + 3);
-	else
-		return (0xFFFFFF);
-	return (color);
-}
-
 t_coords	**allocate_coords(t_info inf)
 {
-    t_coords	**coords;
+	t_coords	**coords;
 	int			i;
 
 	i = 0;
@@ -83,9 +70,9 @@ t_coords	**get_coordinates(t_map *map, t_info inf)
 
 void	draw_map(t_coords **coords, t_mlx *mlx, t_info info)
 {
-	t_line		line;
-	int			i;
-	int			j;
+	t_line	line;
+	int		i;
+	int		j;
 
 	i = -1;
 	while (++i < info.height_map)
