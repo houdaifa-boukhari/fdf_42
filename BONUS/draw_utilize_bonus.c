@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 21:11:55 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/30 14:28:09 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:35:47 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,8 +75,7 @@ void	draw_map(t_coords **coords, t_mlx *mlx, t_info info)
 	int		j;
 
 	i = -1;
-	rotation(coords, mlx);
-	// apply_rotation(mlx->coords, mlx);
+	apply_rotation(mlx->coords, mlx);
 	while (++i < info.height_map)
 	{
 		j = -1;

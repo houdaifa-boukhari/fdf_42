@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/30 12:17:22 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/30 17:36:11 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,10 +134,6 @@ void		assign_values(t_coords coord1, t_coords coord2,
 void		offset_to_center(t_line *line, t_mlx *mlx);
 void		manage_moves(t_mlx **mlx, int key);
 void		aplly_isometric(t_coords **coord, t_mlx *mlx);	
-void		rotation_on_x(t_coords **coord, t_mlx *mlx);
-void		rotation_on_y(t_coords **coord, t_mlx *mlx);
-void		rotation_on_z(t_coords **coord, t_mlx *mlx);
-void		rotation(t_coords **coord, t_mlx *mlx);
 void		handle_keys_rotation(t_mlx **mlx, int key);
 int			get_color(char *str);
 void		apply_rotation(t_coords **coord, t_mlx *mlx);
