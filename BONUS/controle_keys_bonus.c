@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:28:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/30 12:19:38 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/30 13:11:02 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,8 +74,6 @@ void	handle_keys_rotation(t_mlx **mlx, int key)
 		(*mlx)->rotate.angle_x = 1 * (PI / 180);
 	else if (key == R_ROTATE_X)
 		(*mlx)->rotate.angle_x = -1 * (PI / 180);
-	else if (key == ROTATE_X || key == R_ROTATE_X)
-		handle_rotate_x(mlx, key);
 	else if (key == ROTATE_Z)
 		(*mlx)->rotate.angle_z = 1 * (PI / 180);
 	else if (key == R_ROTATE_Z)
