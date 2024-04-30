@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 21:11:55 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/29 11:25:09 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/30 12:20:03 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,10 +75,11 @@ void	draw_map(t_coords **coords, t_mlx *mlx, t_info info)
 	int		j;
 
 	i = -1;
+	apply_rotation(mlx->coords, mlx);
 	while (++i < info.height_map)
 	{
-		j = 0;
-		while (j < info.width_map)
+		j = -1;
+		while (++j < info.width_map)
 		{
 			if (j < info.width_map - 1)
 			{
@@ -92,7 +93,6 @@ void	draw_map(t_coords **coords, t_mlx *mlx, t_info info)
 				offset_to_center(&line, mlx);
 				draw_line(mlx->mlx, mlx->mlx_win, line);
 			}
-			j++;
 		}
 	}
 }

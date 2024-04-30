@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:28:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/29 11:25:14 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/30 12:19:38 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,14 @@ void	manage_moves(t_mlx **mlx, int key)
 	else if (key == MINIMIZE && ((*mlx)->moves.zoom * -1) < (*mlx)->inf.zoom
 		- 1)
 		(*mlx)->moves.zoom -= 1;
+	else if (key == PARALELL)
+	{
+		(*mlx)->rotate.angle_x = 0;
+		(*mlx)->rotate.angle_y = 0;
+		(*mlx)->rotate.angle_z = 0;
+		draw_map((*mlx)->cpy_coords, *mlx, (*mlx)->inf);
+		return ;
+	}
 	draw_map((*mlx)->coords, *mlx, (*mlx)->inf);
 }
 
@@ -53,44 +61,28 @@ int	manage_keys(int key_press, t_mlx *mlx)
 		manage_moves(&mlx, ZOOM);
 	else if (key_press == MINIMIZE)
 		manage_moves(&mlx, MINIMIZE);
+	else if (key_press == PARALELL)
+		manage_moves(&mlx, PARALELL);
 	else
 		handle_keys_rotation(&mlx, key_press);
 	return (0);
 }
 
-void	handle_rotate_x(t_mlx **mlx, int key)
-{
-	(*mlx)->rotate.x = true;
-	if (key == ROTATE_X)
-		(*mlx)->rotate.angle_x += 5 * (PI / 180);
-	else if (key == R_ROTATE_X)
-		(*mlx)->rotate.angle_x -= 5 * (PI / 180);
-}
-
 void	handle_keys_rotation(t_mlx **mlx, int key)
 {
-	if (key == ROTATE_X || key == R_ROTATE_X)
+	if (key == ROTATE_X)
+		(*mlx)->rotate.angle_x = 1 * (PI / 180);
+	else if (key == R_ROTATE_X)
+		(*mlx)->rotate.angle_x = -1 * (PI / 180);
+	else if (key == ROTATE_X || key == R_ROTATE_X)
 		handle_rotate_x(mlx, key);
 	else if (key == ROTATE_Z)
-	{
-		(*mlx)->rotate.z = true;
-		(*mlx)->rotate.angle_z += 5 * (PI / 180);
-	}
+		(*mlx)->rotate.angle_z = 1 * (PI / 180);
 	else if (key == R_ROTATE_Z)
-	{
-		(*mlx)->rotate.z = true;
-		(*mlx)->rotate.angle_z -= 5 * (PI / 180);
-	}
-	if (key == ROTATE_Y)
-	{
-		(*mlx)->rotate.y = true;
-		(*mlx)->rotate.angle_y += 5 * (PI / 180);
-	}
+		(*mlx)->rotate.angle_z = -1 * (PI / 180);
+	else if (key == ROTATE_Y)
+		(*mlx)->rotate.angle_y = 1 * (PI / 180);
 	else if (key == R_ROTATE_Y)
-	{
-		(*mlx)->rotate.y = true;
-		(*mlx)->rotate.angle_y -= 5 * (PI / 180);
-	}
+		(*mlx)->rotate.angle_y = -1 * (PI / 180);
 	draw_map((*mlx)->coords, *mlx, (*mlx)->inf);
-	initialize_rotaion(*mlx);
 }

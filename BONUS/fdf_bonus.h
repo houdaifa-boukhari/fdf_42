@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/29 11:25:25 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/04/30 12:17:22 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@
 # define R_ROTATE_Y 86
 # define R_ROTATE_Z 88
 # define SHUT_DOWN 53
+# define PARALELL 35
 
 typedef struct s_map
 {
@@ -111,6 +112,7 @@ typedef struct s_mlx
 	void			*mlx;
 	void			*mlx_win;
 	t_coords		**coords;
+	t_coords		**cpy_coords;
 	t_info			inf;
 	t_moves			moves;
 	t_rt			rotate;
@@ -131,13 +133,13 @@ void		assign_values(t_coords coord1, t_coords coord2,
 				t_line *line, t_mlx *mlx);
 void		offset_to_center(t_line *line, t_mlx *mlx);
 void		manage_moves(t_mlx **mlx, int key);
-void		rotation(t_line *line, t_mlx *mlx);
-void		initialize_rotaion(t_mlx *mlx);
 void		aplly_isometric(t_coords **coord, t_mlx *mlx);	
-void		rotation_on_x(t_line *line, float angle);
-void		rotation_on_z(t_line *line, float angle);
-void		rotation_on_y(t_line *line, float angle);
+void		rotation_on_x(t_coords **coord, t_mlx *mlx);
+void		rotation_on_y(t_coords **coord, t_mlx *mlx);
+void		rotation_on_z(t_coords **coord, t_mlx *mlx);
+void		rotation(t_coords **coord, t_mlx *mlx);
 void		handle_keys_rotation(t_mlx **mlx, int key);
 int			get_color(char *str);
+void		apply_rotation(t_coords **coord, t_mlx *mlx);
 
 #endif

@@ -3,5 +3,6 @@
         "mlx.h": "c",
         "complex": "c",
         "fdf.h": "c"
-    }
+    },
+    "C_Cpp.errorSquiggles": "disabled"
 }
