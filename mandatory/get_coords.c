@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 18:26:29 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/01 11:30:14 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/01 15:13:46 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	assign_map(t_mlx *mlx, t_map *map)
 	mlx->inf.width_win = 1000;
 	mlx->inf.height_img = 1000;
 	mlx->inf.width_img = 1000;
-	mlx->inf.zoom = 25;
+    mlx->inf.zoom = 8;
 }
 
 void	offset_to_center(t_line *line, t_mlx *mlx)

@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/01 11:30:41 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/01 14:53:00 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../libft/libft.h"
 # include "../printf/ft_printf.h"
 # include <fcntl.h>
+# include <float.h>
 # include <limits.h>
 # include <math.h>
 # include <mlx.h>
@@ -66,8 +67,9 @@ typedef struct s_info
 	float	width_win;
 	float	height_map;
 	float	width_map;
-	int		height_img;
-	int		width_img;
+	float	height_img;
+	float	width_img;
+	float	max_z;
 	float	zoom;
 }			t_info;
 
@@ -83,6 +85,7 @@ typedef struct s_rotation
 	float	angle_x;
 	float	angle_z;
 }			t_rt;
+
 typedef struct s_img
 {
 	void	*img;
@@ -102,6 +105,17 @@ typedef struct s_mlx
 	t_img			img;
 }					t_mlx;
 
+typedef struct s_center
+{
+	float	max_x;
+	float	min_x;
+	float	max_y;
+	float	min_y;
+	float	max_z;
+	float	width;
+	float	height;
+}			t_center;
+
 t_coords	**get_coordinates(t_map *map, t_info info_map);
 bool		creat_list(char *cmd, t_map **head);
 int			count_arrays(char **str);
@@ -118,7 +132,6 @@ void		aplly_isometric(t_coords **coord, t_mlx *mlx);
 int			get_color(char *str);
 void		ft_error(void);
 void		my_mlx_pixel_put(t_mlx **mlx, int x, int y, int color);
-void		assign_values(t_coords coord1, t_coords coord2,
-				t_line *line);
+void		assign_values(t_coords coord1, t_coords coord2, t_line *line, t_mlx *mlx);
 
 #endif
