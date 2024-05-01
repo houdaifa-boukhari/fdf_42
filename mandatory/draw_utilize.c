@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 21:11:55 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/29 12:43:08 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/01 11:31:16 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,33 +77,33 @@ void	draw_map(t_coords **coords, t_mlx *mlx, t_info info)
 	i = -1;
 	while (++i < info.height_map)
 	{
-		j = 0;
-		while (j < info.width_map)
+		j = -1;
+		while (++j < info.width_map)
 		{
 			if (j < info.width_map - 1)
 			{
 				assign_values(coords[i][j], coords[i][j + 1], &line);
 				offset_to_center(&line, mlx);
-				draw_line(mlx->mlx, mlx->mlx_win, line);
+				draw_line(mlx, line);
 			}
 			if (i < info.height_map - 1)
 			{
 				assign_values(coords[i][j], coords[i + 1][j], &line);
 				offset_to_center(&line, mlx);
-				draw_line(mlx->mlx, mlx->mlx_win, line);
+				draw_line(mlx, line);
 			}
-			j++;
 		}
 	}
+	mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->img.img, 0, 0);
 }
 
-void	draw_line(void *mlx, void *mlx_win, t_line coords)
+void	draw_line(t_mlx *mlx, t_line coords)
 {
 	t_data	var;
 	int		j;
 	int		new_color;
 
-	j = 0;
+	j = -1;
 	var.var_x = coords.end_x - coords.start_x;
 	var.var_y = coords.end_y - coords.start_y;
 	if (fabs(var.var_x) > fabs(var.var_y))
@@ -114,14 +114,12 @@ void	draw_line(void *mlx, void *mlx_win, t_line coords)
 	var.var_y = var.var_y / var.steps;
 	var.inc_x = coords.start_x;
 	var.inc_y = coords.start_y;
-	while (j < var.steps)
+	while (++j < var.steps)
 	{
 		var.inc_x += var.var_x;
 		var.inc_y += var.var_y;
 		new_color = create_gradient(coords.start_color, coords.end_color,
 				(float)j / var.steps);
-		mlx_pixel_put(mlx, mlx_win, round(var.inc_x), round(var.inc_y),
-			new_color);
-		j++;
+		my_mlx_pixel_put(&mlx, round(var.inc_x), round(var.inc_y), new_color);
 	}
 }

@@ -30,7 +30,6 @@ $(NAME_BONUS) : $(OBJS_BONUS)
 		@$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(OBJS_BONUS) -o $(NAME_BONUS) $(LIBS)
 %.o : %.c $(HEADER_BONUS)
 		@$(CC) $(CFLAGS) -c $< -o $@
-
 clean :
 	@rm -f $(OBJS)
 	@rm -f $(OBJS_BONUS)
