@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 12:27:28 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:00:26 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,7 +131,7 @@ void				draw_map(t_coords **coords, t_mlx *mlx, t_info info);
 void				offset_to_center(t_line *line, t_mlx *mlx);
 void				aplly_isometric(t_coords **coord, t_mlx *mlx);
 int					get_color(char *str);
-void				ft_error(void);
+void				ft_error(char *str);
 void				my_mlx_pixel_put(t_mlx **mlx, int x, int y, int color);
 void				assign_values(t_coords coord1, t_coords coord2,
 						t_line *line, t_mlx *mlx);

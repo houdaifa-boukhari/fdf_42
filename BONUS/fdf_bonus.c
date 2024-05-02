@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 15:49:47 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 16:01:27 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ bool	check_map(t_map *current)
 	int	size;
 
 	if (!current)
-		return (false);
+		ft_error("map is empty\n");
 	size = count_arrays(current->map);
 	current = current->next;
 	while (current)
@@ -36,8 +36,8 @@ bool	handle_input(char *file, t_map **map)
 
 	str = ft_strrchr(file, '.');
 	if (str == NULL || ft_strncmp(str, ".fdf", 4))
-		return (false);
-	fd = open(file, O_RDWR, 0644);
+		ft_error("Invalid file extension\n");
+	fd = open(file, O_RDONLY);
 	if (fd < 0)
 	{
 		perror(file);
@@ -76,7 +76,7 @@ int	main(int argc, char **argv)
 	if (argc == 2)
 	{
 		if (handle_input(argv[1], &map) == false)
-			ft_error();
+			ft_error("Error\n");
 		assign_map(&mlx.inf, map);
 		assign_mlx(&mlx, map);
 		initialize_moves(&mlx);

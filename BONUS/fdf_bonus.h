@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 12:32:41 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:53:57 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,5 @@ void		initalize_rotation(t_rt *rotate);
 void		get_center(t_coords coord, t_center *va);
 void		aplly_scale(t_coords **coord, t_mlx *mlx);
 void		initialize_centre(t_center *va);
-void		ft_error(void);
-
+void		ft_error(char *str);
 #endif

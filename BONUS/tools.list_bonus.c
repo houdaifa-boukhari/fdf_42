@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 21:12:05 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 12:13:49 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:51:53 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,8 +76,8 @@ void	free_arrays(char **str)
 	}
 }
 
-void	ft_error(void)
+void	ft_error(char *str)
 {
-	ft_putstr_fd("Error\n", STDERR_FILENO);
+	ft_putstr_fd(str, STDERR_FILENO);
 	exit(EXIT_FAILURE);
 }
