@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:28:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 10:11:27 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:14:11 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ int	manage_keys(int key_press, t_mlx *mlx)
 	if (key_press == SHUT_DOWN)
 		close_window(mlx);
 	mlx_destroy_image(mlx->mlx, mlx->img.img);
-	mlx->img.img = mlx_new_image(mlx->mlx, mlx->inf.width, mlx->inf.height);
+	mlx->img.img = mlx_new_image(mlx->mlx, mlx->inf.width_img, mlx->inf.height_img);
 	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel,
 			&mlx->img.line_length, &mlx->img.endian);
 	if (key_press == UP)
@@ -73,17 +73,19 @@ int	manage_keys(int key_press, t_mlx *mlx)
 
 void	handle_keys_rotation(t_mlx **mlx, int key)
 {
+	initalize_rotation(&((*mlx)->rotate));
 	if (key == ROTATE_X)
-		(*mlx)->rotate.angle_x = 1 * (PI / 180);
+		(*mlx)->rotate.angle_x = 5 * (PI / 180);
 	else if (key == R_ROTATE_X)
-		(*mlx)->rotate.angle_x = -1 * (PI / 180);
+		(*mlx)->rotate.angle_x = -5 * (PI / 180);
 	else if (key == ROTATE_Z)
-		(*mlx)->rotate.angle_z = 1 * (PI / 180);
+		(*mlx)->rotate.angle_z = 5 * (PI / 180);
 	else if (key == R_ROTATE_Z)
-		(*mlx)->rotate.angle_z = -1 * (PI / 180);
+		(*mlx)->rotate.angle_z = -5 * (PI / 180);
 	else if (key == ROTATE_Y)
-		(*mlx)->rotate.angle_y = 1 * (PI / 180);
+		(*mlx)->rotate.angle_y = 5 * (PI / 180);
 	else if (key == R_ROTATE_Y)
-		(*mlx)->rotate.angle_y = -1 * (PI / 180);
+		(*mlx)->rotate.angle_y = -5 * (PI / 180);
+	apply_rotation((*mlx)->coords, *mlx);
 	draw_map((*mlx)->coords, *mlx, (*mlx)->inf);
 }

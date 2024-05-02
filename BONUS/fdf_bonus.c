@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/01 17:46:06 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 10:45:18 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -110,6 +110,7 @@ int	main(int argc, char **argv)
 		mlx.img.addr = mlx_get_data_addr(mlx.img.img, &mlx.img.bits_per_pixel,
 				&mlx.img.line_length, &mlx.img.endian);
 		initialize_moves(&mlx);
+		apply_rotation(mlx.coords, &mlx);
 		draw_map(mlx.coords, &mlx, mlx.inf);
 		mlx_hook(mlx.mlx_win, 17, 0, close_window, &mlx);
 		mlx_key_hook(mlx.mlx_win, manage_keys, &mlx);

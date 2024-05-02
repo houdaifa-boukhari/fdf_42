@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/01 18:15:26 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 10:59:23 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -161,5 +161,6 @@ void		handle_keys_rotation(t_mlx **mlx, int key);
 int			get_color(char *str);
 void		apply_rotation(t_coords **coord, t_mlx *mlx);
 void		my_mlx_pixel_put(t_mlx **mlx, int x, int y, int color);
+void		initalize_rotation(t_rt *rotate);
 
 #endif

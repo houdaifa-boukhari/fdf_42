@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 18:26:29 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/01 18:20:54 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 11:00:18 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,11 @@ void	initialize_moves(t_mlx *mlx)
 	mlx->rotate.angle_x = atan(sqrt(2));
 	mlx->rotate.angle_y = 0;
 	mlx->rotate.angle_z = -45.0 * (PI / 180.0);
+}
+
+void initalize_rotation(t_rt *rotate)
+{
+	rotate->angle_x = 0;
+	rotate->angle_y = 0;
+	rotate->angle_z = 0;
 }
