@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 12:46:41 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:51:04 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,5 +88,5 @@ int	main(int argc, char **argv)
 		mlx_loop(mlx.mlx);
 	}
 	else
-		ft_putstr_fd("use ./fdf_bonus map.fdf\n", 2);
+		ft_putstr_fd("Usage: ./fdf_bonus map.fdf\n", 2);
 }

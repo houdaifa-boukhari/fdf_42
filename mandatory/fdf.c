@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 12:18:58 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:50:50 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,17 +66,16 @@ void	assign_values(t_coords coord1, t_coords coord2, t_line *line,
 	line->end_color = coord2.color;
 }
 
-int	get_color(char *str)
+void assign_mlx(t_mlx *mlx)
 {
-	int		color;
-	char	*new;
-
-	new = ft_strchr(str, ',');
-	if (new)
-		color = hexa_to_int(new + 3);
-	else
-		return (0xFFFFFF);
-	return (color);
+	mlx->mlx = mlx_init();
+	mlx->mlx_win = mlx_new_window(mlx->mlx, mlx->inf.height_win,
+			mlx->inf.width_win, "fdf");
+	mlx->img.img = mlx_new_image(mlx->mlx, mlx->inf.height_img,
+			mlx->inf.width_img);
+	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel,
+			&mlx->img.line_length, &mlx->img.endian);
+	initialize_moves(mlx);
 }
 
 int	main(int argc, char **argv)
@@ -92,18 +91,13 @@ int	main(int argc, char **argv)
 		assign_map(&mlx, map);
 		mlx.coords = get_coordinates(map, mlx.inf);
 		free_list(&map);
-		mlx.mlx = mlx_init();
-		mlx.mlx_win = mlx_new_window(mlx.mlx, mlx.inf.height_win,
-				mlx.inf.width_win, "fdf");
-		mlx.img.img = mlx_new_image(mlx.mlx, mlx.inf.height_img,
-				mlx.inf.width_img);
-		mlx.img.addr = mlx_get_data_addr(mlx.img.img, &mlx.img.bits_per_pixel,
-				&mlx.img.line_length, &mlx.img.endian);
-		initialize_moves(&mlx);
+		assign_mlx(&mlx);
 		aplly_isometric(mlx.coords, &mlx);
 		draw_map(mlx.coords, &mlx, mlx.inf);
 		mlx_hook(mlx.mlx_win, 17, 0, close_window, &mlx);
 		mlx_key_hook(mlx.mlx_win, manage_keys, &mlx);
 		mlx_loop(mlx.mlx);
 	}
+	else
+		ft_putstr_fd("Usage: ./fdf map.fdf\n", 2);
 }
