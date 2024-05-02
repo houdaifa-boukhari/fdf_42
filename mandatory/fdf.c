@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 12:50:50 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:52:45 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void	assign_values(t_coords coord1, t_coords coord2, t_line *line,
 	line->end_color = coord2.color;
 }
 
-void assign_mlx(t_mlx *mlx)
+void	assign_mlx(t_mlx *mlx)
 {
 	mlx->mlx = mlx_init();
 	mlx->mlx_win = mlx_new_window(mlx->mlx, mlx->inf.height_win,
