@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 11:01:32 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 11:47:27 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:27:54 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,5 +74,6 @@ void	apply_rotation(t_coords **coord, t_mlx *mlx)
 	}
 	va.width = va.max_x - va.min_x;
 	va.height = va.max_y - va.min_y;
-	mlx->inf.zoom = fmin(mlx->inf.width_win / va.width, mlx->inf.height_win / va.height) * 0.6;
+	mlx->inf.zoom = fmin(mlx->inf.width_win / va.width, mlx->inf.height_win
+			/ va.height) * 0.6;
 }

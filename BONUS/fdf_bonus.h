@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 12:14:01 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:32:41 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <math.h>
-# include <float.h>
 # include <mlx.h>
 # include <stdbool.h>
 # include <stdio.h>
 # define PI 3.14159265
+# define FLT_MAX 3.402823466e+38F
+# define FLT_MIN 1.175494351e-38F
 # define UP 13
 # define DOWN 1
 # define LEFT 0
@@ -164,6 +165,7 @@ void		apply_rotation(t_coords **coord, t_mlx *mlx);
 void		my_mlx_pixel_put(t_mlx **mlx, int x, int y, int color);
 void		initalize_rotation(t_rt *rotate);
 void		get_center(t_coords coord, t_center *va);
+void		aplly_scale(t_coords **coord, t_mlx *mlx);
 void		initialize_centre(t_center *va);
 void		ft_error(void);
 

@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:28:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 11:14:11 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:37:37 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,8 @@ int	manage_keys(int key_press, t_mlx *mlx)
 	if (key_press == SHUT_DOWN)
 		close_window(mlx);
 	mlx_destroy_image(mlx->mlx, mlx->img.img);
-	mlx->img.img = mlx_new_image(mlx->mlx, mlx->inf.width_img, mlx->inf.height_img);
+	mlx->img.img = mlx_new_image(mlx->mlx, mlx->inf.width_img,
+			mlx->inf.height_img);
 	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel,
 			&mlx->img.line_length, &mlx->img.endian);
 	if (key_press == UP)
@@ -88,4 +89,15 @@ void	handle_keys_rotation(t_mlx **mlx, int key)
 		(*mlx)->rotate.angle_y = -5 * (PI / 180);
 	apply_rotation((*mlx)->coords, *mlx);
 	draw_map((*mlx)->coords, *mlx, (*mlx)->inf);
+}
+
+void	my_mlx_pixel_put(t_mlx **mlx, int x, int y, int color)
+{
+	char	*dst;
+
+	if (x < 0 || y < 0 || x >= (*mlx)->inf.width_img
+		|| y >= (*mlx)->inf.height_img)
+		return ;
+	dst = (*mlx)->img.addr + (y * (*mlx)->img.line_length + x * (4));
+	*(unsigned int *)dst = color;
 }

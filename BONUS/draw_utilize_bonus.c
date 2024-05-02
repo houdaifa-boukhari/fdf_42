@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 21:11:55 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 11:45:19 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:36:43 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,15 +123,4 @@ void	draw_line(t_mlx *mlx, t_line coords)
 		my_mlx_pixel_put(&mlx, round(var.inc_x), round(var.inc_y), new_color);
 		j++;
 	}
-}
-
-void	my_mlx_pixel_put(t_mlx **mlx, int x, int y, int color)
-{
-	char	*dst;
-
-	if (x < 0 || y < 0 || x >= (*mlx)->inf.width_img
-		|| y >= (*mlx)->inf.height_img)
-		return ;
-	dst = (*mlx)->img.addr + (y * (*mlx)->img.line_length + x * (4));
-	*(unsigned int *)dst = color;
 }

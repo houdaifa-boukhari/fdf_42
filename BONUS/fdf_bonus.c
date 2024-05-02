@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 12:14:36 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:46:41 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,55 +53,18 @@ bool	handle_input(char *file, t_map **map)
 	return (true);
 }
 
-void	assign_values(t_coords coord1, t_coords coord2, t_line *line,
-		t_mlx *mlx)
+void	assign_mlx(t_mlx *mlx, t_map *map)
 {
-	line->start_x = (coord1.x / mlx->inf.zoom) * (mlx->inf.zoom
-			+ mlx->moves.zoom) + mlx->moves.x;
-	line->start_y = ((coord1.y / mlx->inf.zoom) * (mlx->inf.zoom
-			+ mlx->moves.zoom) + mlx->moves.y) * 0.75;
-	line->start_z = (coord1.z / mlx->inf.zoom) * (mlx->inf.zoom
-			+ mlx->moves.zoom) + mlx->moves.z;
-	line->start_color = coord1.color;
-	line->end_x = (coord2.x / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom)
-		+ mlx->moves.x;
-	line->end_y = ((coord2.y / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom)
-		+ mlx->moves.y) * 0.75;
-	line->end_z = (coord2.z / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom)
-		+ mlx->moves.z;
-	line->end_color = coord2.color;
-}
-
-void	aplly_scale(t_coords **coord, t_mlx *mlx)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < mlx->inf.height_map)
-	{
-		j = 0;
-		while (j < mlx->inf.width_map)
-		{
-			coord[i][j].x *= mlx->inf.zoom;
-			coord[i][j].y *= mlx->inf.zoom;
-			coord[i][j].z *= mlx->inf.zoom;
-			j++;
-		}
-		i++;
-	}
-}
-int	get_color(char *str)
-{
-	int		color;
-	char	*new;
-
-	new = ft_strchr(str, ',');
-	if (new)
-		color = hexa_to_int(new + 3);
-	else
-		return (0xFFFFFF);
-	return (color);
+	mlx->coords = get_coordinates(map, mlx->inf);
+	mlx->cpy_coords = get_coordinates(map, mlx->inf);
+	mlx->mlx = mlx_init();
+	mlx->mlx_win = mlx_new_window(mlx->mlx, mlx->inf.height_win,
+			mlx->inf.width_win, "fdf");
+	mlx->img.img = mlx_new_image(mlx->mlx, mlx->inf.height_img,
+			mlx->inf.width_img);
+	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel,
+			&mlx->img.line_length, &mlx->img.endian);
+	initialize_moves(mlx);
 }
 
 int	main(int argc, char **argv)
@@ -115,16 +78,7 @@ int	main(int argc, char **argv)
 		if (handle_input(argv[1], &map) == false)
 			ft_error();
 		assign_map(&mlx.inf, map);
-		mlx.coords = get_coordinates(map, mlx.inf);
-		mlx.cpy_coords = get_coordinates(map, mlx.inf);
-		free_list(&map);
-		mlx.mlx = mlx_init();
-		mlx.mlx_win = mlx_new_window(mlx.mlx, mlx.inf.height_win,
-				mlx.inf.width_win, "fdf");
-		mlx.img.img = mlx_new_image(mlx.mlx, mlx.inf.height_img,
-				mlx.inf.width_img);
-		mlx.img.addr = mlx_get_data_addr(mlx.img.img, &mlx.img.bits_per_pixel,
-				&mlx.img.line_length, &mlx.img.endian);
+		assign_mlx(&mlx, map);
 		initialize_moves(&mlx);
 		apply_rotation(mlx.coords, &mlx);
 		aplly_scale(mlx.coords, &mlx);
@@ -133,4 +87,6 @@ int	main(int argc, char **argv)
 		mlx_key_hook(mlx.mlx_win, manage_keys, &mlx);
 		mlx_loop(mlx.mlx);
 	}
+	else
+		ft_putstr_fd("use ./fdf_bonus map.fdf\n", 2);
 }

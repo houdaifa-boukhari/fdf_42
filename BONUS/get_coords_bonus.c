@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 18:26:29 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 11:46:32 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:34:01 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,29 +60,9 @@ void	initialize_moves(t_mlx *mlx)
 	mlx->rotate.angle_z = -45.0 * (PI / 180.0);
 }
 
-void initalize_rotation(t_rt *rotate)
+void	initalize_rotation(t_rt *rotate)
 {
 	rotate->angle_x = 0;
 	rotate->angle_y = 0;
 	rotate->angle_z = 0;
-}
-
-void	get_center(t_coords coord, t_center *va)
-{
-	if (coord.x > va->max_x)
-		va->max_x = coord.x;
-	if (coord.x < va->min_x)
-		va->min_x = coord.x;
-	if (coord.y > va->max_y)
-		va->max_y = coord.y;
-	if (coord.y < va->min_y)
-		va->min_y = coord.y;
-}
-
-void	initialize_centre(t_center *va)
-{
-	va->max_x = FLT_MIN;
-	va->min_x = FLT_MAX;
-	va->max_y = FLT_MIN;
-	va->min_y = FLT_MAX;
 }

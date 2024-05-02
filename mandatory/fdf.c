@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/01 17:35:47 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 12:18:58 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,8 @@ bool	handle_input(char *file, t_map **map)
 	return (true);
 }
 
-void	assign_values(t_coords coord1, t_coords coord2, t_line *line, t_mlx *mlx)
+void	assign_values(t_coords coord1, t_coords coord2, t_line *line,
+		t_mlx *mlx)
 {
 	line->start_x = coord1.x * mlx->inf.zoom;
 	line->start_y = coord1.y * mlx->inf.zoom * 0.75;
