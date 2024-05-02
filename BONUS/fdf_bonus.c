@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/30 13:26:13 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/01 17:46:06 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,10 @@ int	main(int argc, char **argv)
 		mlx.mlx = mlx_init();
 		mlx.mlx_win = mlx_new_window(mlx.mlx, mlx.inf.height_win,
 				mlx.inf.width_win, "fdf");
+		mlx.img.img = mlx_new_image(mlx.mlx, mlx.inf.height_img,
+				mlx.inf.width_img);
+		mlx.img.addr = mlx_get_data_addr(mlx.img.img, &mlx.img.bits_per_pixel,
+				&mlx.img.line_length, &mlx.img.endian);
 		initialize_moves(&mlx);
 		draw_map(mlx.coords, &mlx, mlx.inf);
 		mlx_hook(mlx.mlx_win, 17, 0, close_window, &mlx);

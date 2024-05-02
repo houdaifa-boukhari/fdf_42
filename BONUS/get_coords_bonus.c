@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 18:26:29 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/30 14:16:22 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/01 18:20:54 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,15 @@ int	create_gradient(int color1, int color2, double position)
 	return ((new_color.r << 16) | (new_color.g << 8) | new_color.b);
 }
 
-void	assign_map(t_info *map_info, t_map *map)
+void	assign_map(t_info *inf, t_map *map)
 {
-	map_info->height_map = ft_lstsize((t_list *)map);
-	map_info->width_map = count_arrays(map->map);
-	map_info->height_win = 1000;
-	map_info->width_win = 1000;
-	map_info->zoom = 25;
+	inf->height_map = ft_lstsize((t_list *)map);
+	inf->width_map = count_arrays(map->map);
+	inf->height_win = 1000;
+	inf->width_win = 1000;
+	inf->height_img = 1000;
+	inf->width_img = 1000;
+	inf->zoom = 25;
 }
 
 void	offset_to_center(t_line *line, t_mlx *mlx)

@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:28:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/30 13:11:02 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 10:11:27 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,10 @@ int	manage_keys(int key_press, t_mlx *mlx)
 {
 	if (key_press == SHUT_DOWN)
 		close_window(mlx);
-	mlx_clear_window(mlx->mlx, mlx->mlx_win);
+	mlx_destroy_image(mlx->mlx, mlx->img.img);
+	mlx->img.img = mlx_new_image(mlx->mlx, mlx->inf.width, mlx->inf.height);
+	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel,
+			&mlx->img.line_length, &mlx->img.endian);
 	if (key_press == UP)
 		manage_moves(&mlx, UP);
 	else if (key_press == DOWN)

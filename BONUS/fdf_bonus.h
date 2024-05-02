@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/30 17:36:11 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/01 18:15:26 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,8 @@ typedef struct s_info
 	float	width_win;
 	float	height_map;
 	float	width_map;
+	float	height_img;
+	float	width_img;
 	float	zoom;
 }			t_info;
 
@@ -107,6 +109,15 @@ typedef struct s_rotation
 	float	angle_z;
 }			t_rt;
 
+typedef struct s_img
+{
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}			t_img;
+
 typedef struct s_mlx
 {
 	void			*mlx;
@@ -116,13 +127,25 @@ typedef struct s_mlx
 	t_info			inf;
 	t_moves			moves;
 	t_rt			rotate;
+	t_img			img;
 }					t_mlx;
+
+typedef struct s_center
+{
+	float	max_x;
+	float	min_x;
+	float	max_y;
+	float	min_y;
+	float	max_z;
+	float	width;
+	float	height;
+}			t_center;
 
 t_coords	**get_coordinates(t_map *map, t_info info_map);
 bool		creat_list(char *cmd, t_map **head);
 int			count_arrays(char **str);
 void		*free_list(t_map **head);
-void		draw_line(void *mlx, void *mlx_win, t_line coords);
+void		draw_line(t_mlx *mlx, t_line coords);
 void		assign_map(t_info *map_info, t_map *map);
 int			create_gradient(int color1, int color2, double t);
 int			manage_keys(int key_press, t_mlx *mlx);
@@ -137,5 +160,6 @@ void		aplly_isometric(t_coords **coord, t_mlx *mlx);
 void		handle_keys_rotation(t_mlx **mlx, int key);
 int			get_color(char *str);
 void		apply_rotation(t_coords **coord, t_mlx *mlx);
+void		my_mlx_pixel_put(t_mlx **mlx, int x, int y, int color);
 
 #endif

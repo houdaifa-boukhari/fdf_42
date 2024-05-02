@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 21:11:55 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/04/30 17:35:47 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/01 18:15:05 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,19 +85,20 @@ void	draw_map(t_coords **coords, t_mlx *mlx, t_info info)
 			{
 				assign_values(coords[i][j], coords[i][j + 1], &line, mlx);
 				offset_to_center(&line, mlx);
-				draw_line(mlx->mlx, mlx->mlx_win, line);
+				draw_line(mlx, line);
 			}
 			if (i < info.height_map - 1)
 			{
 				assign_values(coords[i][j], coords[i + 1][j], &line, mlx);
 				offset_to_center(&line, mlx);
-				draw_line(mlx->mlx, mlx->mlx_win, line);
+				draw_line(mlx, line);
 			}
 		}
 	}
+	mlx_put_image_to_window(mlx->mlx, mlx->mlx_win, mlx->img.img, 0, 0);
 }
 
-void	draw_line(void *mlx, void *mlx_win, t_line coords)
+void	draw_line(t_mlx *mlx, t_line coords)
 {
 	t_data	var;
 	int		j;
@@ -120,8 +121,18 @@ void	draw_line(void *mlx, void *mlx_win, t_line coords)
 		var.inc_y += var.var_y;
 		new_color = create_gradient(coords.start_color, coords.end_color,
 				(float)j / var.steps);
-		mlx_pixel_put(mlx, mlx_win, round(var.inc_x), round(var.inc_y),
-			new_color);
+		my_mlx_pixel_put(&mlx, round(var.inc_x), round(var.inc_y), new_color);
 		j++;
 	}
+}
+
+void	my_mlx_pixel_put(t_mlx **mlx, int x, int y, int color)
+{
+	char	*dst;
+
+	if (x < 0 || y < 0 || x >= (*mlx)->inf.width_img
+		|| y >= (*mlx)->inf.height_img)
+		return ;
+	dst = (*mlx)->img.addr + (y * (*mlx)->img.line_length + x * (4));
+	*(unsigned int *)dst = color;
 }
