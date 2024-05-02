@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 12:52:45 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 15:50:48 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ bool	handle_input(char *file, t_map **map)
 	char	*str;
 	int		fd;
 
-	str = ft_strnstr(file, ".fdf", ft_strlen(file));
-	if (str == NULL || *(str + 4) != '\0')
+	str = ft_strrchr(file, '.');
+	if (str == NULL || ft_strncmp(str, ".fdf", 4))
 		return (false);
 	fd = open(file, O_RDWR, 0644);
 	if (fd < 0)
