@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 15:53:57 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/03 14:10:38 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@
 # include <mlx.h>
 # include <stdbool.h>
 # include <stdio.h>
+# include <time.h>
 # define PI 3.14159265
 # define FLT_MAX 3.402823466e+38F
 # define FLT_MIN 1.175494351e-38F
@@ -39,6 +40,8 @@
 # define R_ROTATE_Z 88
 # define SHUT_DOWN 53
 # define PARALELL 35
+# define BONUS 11
+# define R_COLOR 8
 
 typedef struct s_map
 {
@@ -99,6 +102,9 @@ typedef struct s_moves
 	float	y;
 	float	z;
 	float	zoom;
+	bool	paralell;
+	bool	bonus;
+	bool	color;
 }			t_moves;
 
 typedef struct s_rotation
@@ -166,6 +172,9 @@ void		my_mlx_pixel_put(t_mlx **mlx, int x, int y, int color);
 void		initalize_rotation(t_rt *rotate);
 void		get_center(t_coords coord, t_center *va);
 void		aplly_scale(t_coords **coord, t_mlx *mlx);
+void		draw_bonus(t_coords **coords, t_mlx *mlx, t_info info);
 void		initialize_centre(t_center *va);
 void		ft_error(char *str);
+int			random_color();
+void		show_instructions(t_mlx *mlx);
 #endif

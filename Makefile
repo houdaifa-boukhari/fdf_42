@@ -3,7 +3,7 @@ NAME_BONUS = fdf_bonus
 HEADER = ./MANDATORY/fdf.h
 HEADER_BONUS = ./BONUS/fdf_bonus.h
 SRC_BONUS= ./BONUS/fdf_bonus.c ./BONUS/controle_keys_bonus.c ./BONUS/get_coords_bonus.c ./BONUS/tools.list_bonus.c ./BONUS/draw_utilize_bonus.c \
-	./BONUS/rotation_utlize_bonus.c ./BONUS/get_coords2_bonus.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
+	./BONUS/rotation_utlize_bonus.c ./BONUS/get_coords2_bonus.c ./BONUS/extra_bonus.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 SRC = ./MANDATORY/fdf.c ./MANDATORY/controle_keys.c ./MANDATORY/get_coords.c ./MANDATORY/tools.list.c ./MANDATORY/draw_utilize.c \
 	./MANDATORY/rotation_utlize.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 OBJS = $(SRC:.c=.o)

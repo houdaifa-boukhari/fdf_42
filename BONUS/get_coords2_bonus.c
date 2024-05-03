@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:30:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 13:06:08 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/03 14:10:52 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,12 +74,20 @@ void	assign_values(t_coords coord1, t_coords coord2, t_line *line,
 				+ mlx->moves.zoom) + mlx->moves.y) * 0.75;
 	line->start_z = (coord1.z / mlx->inf.zoom) * (mlx->inf.zoom
 			+ mlx->moves.zoom) + mlx->moves.z;
-	line->start_color = coord1.color;
 	line->end_x = (coord2.x / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom)
 		+ mlx->moves.x;
 	line->end_y = ((coord2.y / mlx->inf.zoom) * (mlx->inf.zoom
 				+ mlx->moves.zoom) + mlx->moves.y) * 0.75;
 	line->end_z = (coord2.z / mlx->inf.zoom) * (mlx->inf.zoom + mlx->moves.zoom)
 		+ mlx->moves.z;
-	line->end_color = coord2.color;
+	if (mlx->moves.color == true)
+	{
+		line->start_color = random_color();
+		line->end_color = random_color();
+	}
+	else
+	{	
+		line->start_color = coord1.color;
+		line->end_color = coord2.color;
+	}
 }

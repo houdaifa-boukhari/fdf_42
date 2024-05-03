@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:28:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 14:56:04 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/03 14:15:09 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,17 @@ void	manage_moves(t_mlx **mlx, int key)
 		(*mlx)->moves.zoom -= 1;
 	else if (key == PARALELL)
 	{
-		(*mlx)->rotate.angle_x = 0;
-		(*mlx)->rotate.angle_y = 0;
-		(*mlx)->rotate.angle_z = 0;
 		draw_map((*mlx)->cpy_coords, *mlx, (*mlx)->inf);
 		return ;
 	}
+	else if (key == BONUS && (*mlx)->moves.bonus == true)
+		(*mlx)->moves.bonus = false;
+	else if (key == BONUS && (*mlx)->moves.bonus == false)
+		(*mlx)->moves.bonus = true;
+	else if (key == R_COLOR && (*mlx)->moves.color == true)
+		(*mlx)->moves.color = false;
+	else if (key == R_COLOR && (*mlx)->moves.color == false)
+		(*mlx)->moves.color = true;
 	draw_map((*mlx)->coords, *mlx, (*mlx)->inf);
 }
 
@@ -67,6 +72,10 @@ int	manage_keys(int key_press, t_mlx *mlx)
 		manage_moves(&mlx, MINIMIZE);
 	else if (key_press == PARALELL)
 		manage_moves(&mlx, PARALELL);
+	else if (key_press == BONUS)
+		manage_moves(&mlx, BONUS);
+	else if (key_press == R_COLOR)
+		manage_moves(&mlx, R_COLOR);
 	else
 		handle_keys_rotation(&mlx, key_press);
 	return (0);

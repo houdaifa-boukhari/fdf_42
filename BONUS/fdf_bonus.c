@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 16:01:27 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/02 19:41:07 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,7 @@ int	main(int argc, char **argv)
 		aplly_scale(mlx.coords, &mlx);
 		aplly_scale(mlx.cpy_coords, &mlx);
 		draw_map(mlx.coords, &mlx, mlx.inf);
+		show_instructions(&mlx);
 		mlx_hook(mlx.mlx_win, 17, 0, close_window, &mlx);
 		mlx_key_hook(mlx.mlx_win, manage_keys, &mlx);
 		mlx_loop(mlx.mlx);
