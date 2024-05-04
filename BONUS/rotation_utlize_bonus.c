@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 11:01:32 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/04 10:30:33 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 12:16:00 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,24 +57,23 @@ void	apply_rotation(t_coords **coord, t_mlx *mlx)
 	int			i;
 	int			j;
 
-	i = 0;
+	i = -1;
 	initialize_centre(&va);
-	while (i < mlx->inf.height_map)
+	while (++i < mlx->inf.height_map)
 	{
-		j = 0;
-		while (j < mlx->inf.width_map)
+		j = -1;
+		while (++j < mlx->inf.width_map)
 		{
 			rotation_on_z(&coord[i][j], mlx);
 			rotation_on_y(&coord[i][j], mlx);
 			rotation_on_x(&coord[i][j], mlx);
 			get_center(coord[i][j], &va);
-			j++;
 		}
-		i++;
 	}
 	if (mlx->inf.zoom == 1)
 	{
-		mlx->inf.zoom = fmin(mlx->inf.width_win / va.width, mlx->inf.height_win / va.height) * 0.6;
+		mlx->inf.zoom = fmin(mlx->inf.width_win / va.width, mlx->inf.height_win
+				/ va.height) * 0.6;
 		if (mlx->inf.zoom < 1)
 			mlx->inf.zoom = 1;
 	}

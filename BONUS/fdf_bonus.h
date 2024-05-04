@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/04 11:03:52 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 12:16:26 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ typedef struct s_moves
 	float	y;
 	float	z;
 	float	zoom;
-	int 	a_color;
+	int		a_color;
 	bool	paralell;
 	bool	bonus;
 	bool	color;
@@ -179,5 +179,7 @@ void		initialize_centre(t_center *va);
 void		ft_error(char *str);
 int			random_color(int color);
 void		show_instructions(t_mlx *mlx);
+void		draw_horizontal(t_coords **coords, t_mlx *mlx, int i, int j);
+void		draw_vertical(t_coords **coords, t_mlx *mlx, int i, int j);
 
 #endif

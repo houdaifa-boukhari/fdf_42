@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 11:01:32 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/04 10:32:26 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 12:14:01 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,7 +85,8 @@ void	aplly_isometric(t_coords **coord, t_mlx *mlx)
 	}
 	if (mlx->inf.zoom == 1)
 	{
-		mlx->inf.zoom = fmin(mlx->inf.width_win / va.width, mlx->inf.height_win / va.height) * 0.6;
+		mlx->inf.zoom = fmin(mlx->inf.width_win / va.width, mlx->inf.height_win
+				/ va.height) * 0.6;
 		if (mlx->inf.zoom < 1)
 			mlx->inf.zoom = 1;
 	}
