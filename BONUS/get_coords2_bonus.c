@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:30:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/03 14:18:56 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 10:31:38 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,8 @@ void	get_center(t_coords coord, t_center *va)
 		va->max_y = coord.y;
 	if (coord.y < va->min_y)
 		va->min_y = coord.y;
+	va->width = va->max_x - va->min_x;
+	va->height = va->max_y - va->min_y;
 }
 
 int	get_color(char *str)

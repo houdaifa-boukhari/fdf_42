@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 11:01:32 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 12:18:13 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 10:32:26 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,8 @@ void	get_center(t_coords coord, t_center *va)
 		va->min_y = coord.y;
 	if (coord.z > va->max_z)
 		va->max_z = coord.z;
+	va->width = va->max_x - va->min_x;
+	va->height = va->max_y - va->min_y;
 }
 
 void	initialize_centre(t_center *va)
@@ -81,9 +83,10 @@ void	aplly_isometric(t_coords **coord, t_mlx *mlx)
 		}
 		i++;
 	}
-	va.width = va.max_x - va.min_x;
-	va.height = va.max_y - va.min_y;
-	mlx->inf.zoom = fmin(mlx->inf.width_win / va.width, mlx->inf.height_win
-			/ va.height) * 0.6;
-	mlx->inf.max_z = va.max_z * mlx->inf.zoom;
+	if (mlx->inf.zoom == 1)
+	{
+		mlx->inf.zoom = fmin(mlx->inf.width_win / va.width, mlx->inf.height_win / va.height) * 0.6;
+		if (mlx->inf.zoom < 1)
+			mlx->inf.zoom = 1;
+	}
 }
