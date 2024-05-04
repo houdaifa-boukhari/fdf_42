@@ -10,9 +10,9 @@ OBJS = $(SRC:.c=.o)
 OBJS_BONUS = $(SRC_BONUS:.c=.o)
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Imlx -fsanitize=address
-LIBS = -L./libft -lft -L./printf -lftprintf
+LIBS = -L./libft -lft
 
-all : libft printf $(NAME)
+all : libft $(NAME)
 
 $(NAME) : $(OBJS)
 	@$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(OBJS) -o $(NAME) $(LIBS)
@@ -23,9 +23,7 @@ libft:
 	@make -C ./libft all
 	@make -C ./libft bonus
 
-printf:
-	@make -C ./printf
-bonus : libft printf $(NAME_BONUS)
+bonus : libft $(NAME_BONUS)
 $(NAME_BONUS) : $(OBJS_BONUS)
 		@$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(OBJS_BONUS) -o $(NAME_BONUS) $(LIBS)
 %.o : %.c $(HEADER_BONUS)
@@ -34,14 +32,12 @@ clean :
 	@rm -f $(OBJS)
 	@rm -f $(OBJS_BONUS)
 	@make clean -C ./libft
-	@make clean -C ./printf
 
 fclean : clean
 	@rm -f $(NAME)
 	@rm -f $(NAME_BONUS)
 	@make fclean -C ./libft
-	@make fclean -C ./printf
 
 re : fclean all
 
-.PHONY: all clean fclean re libft printf bonus
+.PHONY: all clean fclean re libft bonus

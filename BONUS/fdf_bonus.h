@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/04 12:16:26 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 12:20:15 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 
 # include "../get_next_line/get_next_line.h"
 # include "../libft/libft.h"
-# include "../printf/ft_printf.h"
 # include <fcntl.h>
 # include <limits.h>
 # include <math.h>

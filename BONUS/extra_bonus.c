@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:10:21 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/04 12:17:17 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 12:24:59 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ void	draw_horizontal(t_coords **coords, t_mlx *mlx, int i, int j)
 {
 	t_line	line;
 
-	if (j < mlx->info.width_map - 1)
+	if (j < mlx->inf.width_map - 1)
 	{
 		assign_values(coords[i][j], coords[i][j + 1], &line, mlx);
 		offset_to_center(&line, mlx);
@@ -84,7 +84,7 @@ void	draw_vertical(t_coords **coords, t_mlx *mlx, int i, int j)
 {
 	t_line	line;
 
-	if (i < mlx->info.height_map - 1)
+	if (i < mlx->inf.height_map - 1)
 	{
 		assign_values(coords[i][j], coords[i + 1][j], &line, mlx);
 		offset_to_center(&line, mlx);
