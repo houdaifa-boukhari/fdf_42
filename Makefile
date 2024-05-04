@@ -9,7 +9,7 @@ SRC = ./MANDATORY/fdf.c ./MANDATORY/controle_keys.c ./MANDATORY/get_coords.c ./M
 OBJS = $(SRC:.c=.o)
 OBJS_BONUS = $(SRC_BONUS:.c=.o)
 CC = cc
-CFLAGS = -Wall -Wextra -Werror -Imlx -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -Imlx
 LIBS = -L./libft -lft
 
 all : libft $(NAME)

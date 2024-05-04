@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/16 21:12:05 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 16:00:36 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 13:10:35 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,4 +80,17 @@ void	ft_error(char *str)
 {
 	ft_putstr_fd(str, STDERR_FILENO);
 	exit(EXIT_FAILURE);
+}
+
+void	free_coords(t_coords **coords, t_info inf)
+{
+	int	i;
+
+	i = 0;
+	while (i < inf.height_map)
+	{
+		free(coords[i]);
+		i++;
+	}
+	free(coords);
 }

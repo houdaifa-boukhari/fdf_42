@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:28:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/04 11:08:41 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 15:06:23 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,16 +39,20 @@ void	manage_moves(t_mlx **mlx, int key)
 	draw_map((*mlx)->coords, *mlx, (*mlx)->inf);
 }
 
-int	close_window(t_mlx *mlx)
+int	close_window(t_mlx **mlx)
 {
-	mlx_destroy_window(mlx->mlx, mlx->mlx_win);
+	mlx_clear_window((*mlx)->mlx, (*mlx)->mlx_win);
+	mlx_destroy_image((*mlx)->mlx, (*mlx)->img.img);
+	mlx_destroy_window((*mlx)->mlx, (*mlx)->mlx_win);
+	free_coords((*mlx)->coords, (*mlx)->inf);
+	free_coords((*mlx)->cpy_coords, (*mlx)->inf);
 	exit(0);
 }
 
 int	manage_keys(int key, t_mlx *mlx)
 {
 	if (key == SHUT_DOWN)
-		close_window(mlx);
+		close_window(&mlx);
 	mlx_destroy_image(mlx->mlx, mlx->img.img);
 	mlx->img.img = mlx_new_image(mlx->mlx, mlx->inf.width_img,
 			mlx->inf.height_img);

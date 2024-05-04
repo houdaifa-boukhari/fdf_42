@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/04 12:20:27 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 13:06:09 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -124,13 +124,14 @@ void				draw_line(t_mlx *mlx, t_line coords);
 void				assign_map(t_mlx *mlx, t_map *map);
 int					create_gradient(int color1, int color2, double t);
 int					manage_keys(int key_press, t_mlx *mlx);
-int					close_window(t_mlx *mlx);
+int					close_window(t_mlx **mlx);
 void				initialize_moves(t_mlx *mlx);
 void				draw_map(t_coords **coords, t_mlx *mlx, t_info info);
 void				offset_to_center(t_line *line, t_mlx *mlx);
 void				aplly_isometric(t_coords **coord, t_mlx *mlx);
 int					get_color(char *str);
 void				ft_error(char *str);
+void				free_coords(t_coords **coords, t_info inf);
 void				my_mlx_pixel_put(t_mlx **mlx, int x, int y, int color);
 void				assign_values(t_coords coord1, t_coords coord2,
 						t_line *line, t_mlx *mlx);

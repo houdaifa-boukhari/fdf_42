@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/02 16:01:12 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 14:58:48 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,8 +82,10 @@ int	main(int argc, char **argv)
 {
 	t_map	*map;
 	t_mlx	mlx;
+	t_mlx	*p_mlx;
 
 	map = NULL;
+	p_mlx = &mlx;
 	if (argc == 2)
 	{
 		if (handle_input(argv[1], &map) == false)
@@ -94,7 +96,7 @@ int	main(int argc, char **argv)
 		assign_mlx(&mlx);
 		aplly_isometric(mlx.coords, &mlx);
 		draw_map(mlx.coords, &mlx, mlx.inf);
-		mlx_hook(mlx.mlx_win, 17, 0, close_window, &mlx);
+		mlx_hook(mlx.mlx_win, 17, 0, close_window, &p_mlx);
 		mlx_key_hook(mlx.mlx_win, manage_keys, &mlx);
 		mlx_loop(mlx.mlx);
 	}

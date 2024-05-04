@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/04 12:20:15 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 14:57:49 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -158,7 +158,7 @@ void		draw_line(t_mlx *mlx, t_line coords);
 void		assign_map(t_info *map_info, t_map *map);
 int			create_gradient(int color1, int color2, double t);
 int			manage_keys(int key_press, t_mlx *mlx);
-int			close_window(t_mlx *mlx);
+int			close_window(t_mlx **mlx);
 void		initialize_moves(t_mlx *mlx);
 void		draw_map(t_coords **coords, t_mlx *mlx, t_info info);
 void		assign_values(t_coords coord1, t_coords coord2,
@@ -180,5 +180,6 @@ int			random_color(int color);
 void		show_instructions(t_mlx *mlx);
 void		draw_horizontal(t_coords **coords, t_mlx *mlx, int i, int j);
 void		draw_vertical(t_coords **coords, t_mlx *mlx, int i, int j);
+void		free_coords(t_coords **coords, t_info inf);
 
 #endif
