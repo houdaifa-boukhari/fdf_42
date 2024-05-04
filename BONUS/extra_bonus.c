@@ -6,21 +6,21 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:10:21 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/04 09:15:06 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 11:07:43 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf_bonus.h"
 
-int	random_color(void)
+int	random_color(int color)
 {
-	t_colors	color;
+	t_colors	new_color;
 
-	srand(time(NULL));
-	color.r = rand() % 256;
-	color.g = rand() % 256;
-	color.b = rand() % 256;
-	return ((color.r << 16) | (color.g << 8) | color.b);
+	srand(color);
+	new_color.r = rand() % 256;
+	new_color.g = rand() % 256;
+	new_color.b = rand() % 256;
+	return ((new_color.r << 16) | (new_color.g << 8) | new_color.b);
 }
 
 void	show_instructions(t_mlx *mlx)
@@ -38,7 +38,9 @@ void	show_instructions(t_mlx *mlx)
 	mlx_string_put(mlx->mlx, mlx->mlx_win, 10, 150, 0xFF0000,
 		"B: enable/disable bonus");
 	mlx_string_put(mlx->mlx, mlx->mlx_win, 10, 170, 0xFF0000,
-		"c: enable/disable random color");
+		"C: enable/disable random color");
+	mlx_string_put(mlx->mlx, mlx->mlx_win, 10, 190, 0xFF0000,
+		"V: change color");
 }
 
 void	draw_bonus(t_coords **coords, t_mlx *mlx, t_info info)

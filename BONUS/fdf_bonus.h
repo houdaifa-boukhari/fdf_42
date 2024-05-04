@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/03 14:20:03 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 11:03:52 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@
 # define PARALELL 35
 # define BONUS 11
 # define R_COLOR 8
+# define CHANGE_COLOR 9
 
 typedef struct s_map
 {
@@ -102,6 +103,7 @@ typedef struct s_moves
 	float	y;
 	float	z;
 	float	zoom;
+	int 	a_color;
 	bool	paralell;
 	bool	bonus;
 	bool	color;
@@ -175,7 +177,7 @@ void		aplly_scale(t_coords **coord, t_mlx *mlx);
 void		draw_bonus(t_coords **coords, t_mlx *mlx, t_info info);
 void		initialize_centre(t_center *va);
 void		ft_error(char *str);
-int			random_color(void);
+int			random_color(int color);
 void		show_instructions(t_mlx *mlx);
 
 #endif

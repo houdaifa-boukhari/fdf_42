@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:30:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/04 10:31:38 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 11:05:31 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ void	assign_values(t_coords coord1, t_coords coord2, t_line *line,
 		+ mlx->moves.z;
 	if (mlx->moves.color == true)
 	{
-		line->start_color = random_color();
-		line->end_color = random_color();
+		line->start_color = random_color(coord1.color + mlx->moves.a_color);
+		line->end_color = random_color(coord2.color + mlx->moves.a_color);
 	}
 	else
 	{

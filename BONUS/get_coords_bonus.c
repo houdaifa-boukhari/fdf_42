@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/20 18:26:29 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/03 12:13:07 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 11:05:08 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ void	initialize_moves(t_mlx *mlx)
 	mlx->moves.bonus = false;
 	mlx->moves.paralell = false;
 	mlx->moves.color = false;
+	mlx->moves.a_color = 0;
 }
 
 void	initalize_rotation(t_rt *rotate)

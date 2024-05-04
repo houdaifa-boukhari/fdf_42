@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:28:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/04 09:25:38 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 11:08:41 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,8 @@ void	manage_moves(t_mlx **mlx, int key)
 		(*mlx)->moves.color = false;
 	else if (key == R_COLOR && (*mlx)->moves.color == false)
 		(*mlx)->moves.color = true;
+	else if (key == CHANGE_COLOR)
+		(*mlx)->moves.a_color += 1;
 	draw_map((*mlx)->coords, *mlx, (*mlx)->inf);
 }
 
@@ -56,7 +58,7 @@ int	manage_keys(int key, t_mlx *mlx)
 		manage_moves(&mlx, key);
 	else if (key == LEFT || key == ZOOM || key == MINIMIZE)
 		manage_moves(&mlx, key);
-	else if (key == BONUS || key == R_COLOR)
+	else if (key == BONUS || key == R_COLOR || key == CHANGE_COLOR)
 		manage_moves(&mlx, key);
 	else if (key == PARALELL)
 		draw_map(mlx->cpy_coords, mlx, mlx->inf);
