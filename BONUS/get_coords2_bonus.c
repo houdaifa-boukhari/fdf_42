@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 12:30:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/03 14:10:52 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/03 14:18:56 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,7 +86,7 @@ void	assign_values(t_coords coord1, t_coords coord2, t_line *line,
 		line->end_color = random_color();
 	}
 	else
-	{	
+	{
 		line->start_color = coord1.color;
 		line->end_color = coord2.color;
 	}

@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/22 16:28:27 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/03 14:15:09 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/04 09:25:38 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,8 @@ void	manage_moves(t_mlx **mlx, int key)
 		(*mlx)->moves.x -= 15;
 	else if (key == ZOOM)
 		(*mlx)->moves.zoom += 1;
-	else if (key == MINIMIZE && ((*mlx)->moves.zoom * -1) < (*mlx)->inf.zoom
-		- 1)
+	else if (key == MINIMIZE && ((*mlx)->moves.zoom + (*mlx)->inf.zoom) > 1)
 		(*mlx)->moves.zoom -= 1;
-	else if (key == PARALELL)
-	{
-		draw_map((*mlx)->cpy_coords, *mlx, (*mlx)->inf);
-		return ;
-	}
 	else if (key == BONUS && (*mlx)->moves.bonus == true)
 		(*mlx)->moves.bonus = false;
 	else if (key == BONUS && (*mlx)->moves.bonus == false)
@@ -49,35 +43,25 @@ int	close_window(t_mlx *mlx)
 	exit(0);
 }
 
-int	manage_keys(int key_press, t_mlx *mlx)
+int	manage_keys(int key, t_mlx *mlx)
 {
-	if (key_press == SHUT_DOWN)
+	if (key == SHUT_DOWN)
 		close_window(mlx);
 	mlx_destroy_image(mlx->mlx, mlx->img.img);
 	mlx->img.img = mlx_new_image(mlx->mlx, mlx->inf.width_img,
 			mlx->inf.height_img);
 	mlx->img.addr = mlx_get_data_addr(mlx->img.img, &mlx->img.bits_per_pixel,
 			&mlx->img.line_length, &mlx->img.endian);
-	if (key_press == UP)
-		manage_moves(&mlx, UP);
-	else if (key_press == DOWN)
-		manage_moves(&mlx, DOWN);
-	else if (key_press == RIGHT)
-		manage_moves(&mlx, RIGHT);
-	else if (key_press == LEFT)
-		manage_moves(&mlx, LEFT);
-	else if (key_press == ZOOM)
-		manage_moves(&mlx, ZOOM);
-	else if (key_press == MINIMIZE)
-		manage_moves(&mlx, MINIMIZE);
-	else if (key_press == PARALELL)
-		manage_moves(&mlx, PARALELL);
-	else if (key_press == BONUS)
-		manage_moves(&mlx, BONUS);
-	else if (key_press == R_COLOR)
-		manage_moves(&mlx, R_COLOR);
+	if (key == UP || key == DOWN || key == RIGHT)
+		manage_moves(&mlx, key);
+	else if (key == LEFT || key == ZOOM || key == MINIMIZE)
+		manage_moves(&mlx, key);
+	else if (key == BONUS || key == R_COLOR)
+		manage_moves(&mlx, key);
+	else if (key == PARALELL)
+		draw_map(mlx->cpy_coords, mlx, mlx->inf);
 	else
-		handle_keys_rotation(&mlx, key_press);
+		handle_keys_rotation(&mlx, key);
 	return (0);
 }
 

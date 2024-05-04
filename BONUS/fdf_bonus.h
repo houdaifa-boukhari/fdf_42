@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/03 14:10:38 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/03 14:20:03 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -175,6 +175,7 @@ void		aplly_scale(t_coords **coord, t_mlx *mlx);
 void		draw_bonus(t_coords **coords, t_mlx *mlx, t_info info);
 void		initialize_centre(t_center *va);
 void		ft_error(char *str);
-int			random_color();
+int			random_color(void);
 void		show_instructions(t_mlx *mlx);
+
 #endif
