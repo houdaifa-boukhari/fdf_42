@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/04 15:06:45 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/05 12:34:18 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ int	main(int argc, char **argv)
 {
 	t_map	*map;
 	t_mlx	mlx;
-	t_mlx *p_mlx;
+	t_mlx	*p_mlx;
 
 	map = NULL;
 	p_mlx = &mlx;

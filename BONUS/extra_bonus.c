@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/02 16:10:21 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/04 12:24:59 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/05 12:35:01 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,11 +29,11 @@ void	show_instructions(t_mlx *mlx)
 	mlx_string_put(mlx->mlx, mlx->mlx_win, 10, 50, 0xFF0000, "WASD: translate");
 	mlx_string_put(mlx->mlx, mlx->mlx_win, 10, 70, 0xFF0000, "+/-: Zoom");
 	mlx_string_put(mlx->mlx, mlx->mlx_win, 10, 30, 0xFF0000, "P: Paralell");
-	mlx_string_put(mlx->mlx, mlx->mlx_win, 10, 90, 0xFF0000, 
+	mlx_string_put(mlx->mlx, mlx->mlx_win, 10, 90, 0xFF0000,
 		"Rotation on x: 1, 2");
-	mlx_string_put(mlx->mlx, mlx->mlx_win, 10, 110, 0xFF0000,
+	mlx_string_put(mlx->mlx, mlx->mlx_win, 10, 110, 0xFF0000, 
 		"Rotation on y: 3, 4");
-	mlx_string_put(mlx->mlx, mlx->mlx_win, 10, 130, 0xFF0000,
+	mlx_string_put(mlx->mlx, mlx->mlx_win, 10, 130, 0xFF0000, 
 		"Rotation on z: 5, 6");
 	mlx_string_put(mlx->mlx, mlx->mlx_win, 10, 150, 0xFF0000,
 		"B: enable/disable bonus");
