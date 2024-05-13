@@ -6,13 +6,13 @@
 #    By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/10 10:25:31 by hel-bouk          #+#    #+#              #
-#    Updated: 2024/04/18 12:54:36 by hel-bouk         ###   ########.fr        #
+#    Updated: 2024/05/13 18:09:47 by hel-bouk         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME :=libft.a
 CC := gcc
-CFLAGS := -Wall -Wextra -Werror
+CFLAGS := 
 RM := rm -f
 head := libft.h
 SRC :=	ft_memset.c ft_isalpha.c ft_strjoin.c  ft_strmapi.c ft_isprint.c \

@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/04 13:06:09 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/13 18:32:39 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,8 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <math.h>
-# include <mlx.h>
+// #include <mlx.h>
+# include "../minilibx-linux/mlx.h"
 # include <stdbool.h>
 # include <stdio.h>
 # define PI 3.14159265
@@ -135,5 +136,7 @@ void				free_coords(t_coords **coords, t_info inf);
 void				my_mlx_pixel_put(t_mlx **mlx, int x, int y, int color);
 void				assign_values(t_coords coord1, t_coords coord2,
 						t_line *line, t_mlx *mlx);
+						void check_leaks(void);
+void check_leaks(void);
 
 #endif

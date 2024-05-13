@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/19 22:08:43 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/04 14:58:48 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2024/05/12 17:37:03 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -86,6 +86,7 @@ int	main(int argc, char **argv)
 
 	map = NULL;
 	p_mlx = &mlx;
+	
 	if (argc == 2)
 	{
 		if (handle_input(argv[1], &map) == false)
