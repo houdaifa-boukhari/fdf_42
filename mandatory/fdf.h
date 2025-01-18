@@ -6,7 +6,7 @@
 /*   By: hel-bouk <hel-bouk@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/27 14:38:14 by hel-bouk          #+#    #+#             */
-/*   Updated: 2024/05/13 18:32:39 by hel-bouk         ###   ########.fr       */
+/*   Updated: 2025/01/18 18:57:13 by hel-bouk         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 # include <fcntl.h>
 # include <limits.h>
 # include <math.h>
-// #include <mlx.h>
-# include "../minilibx-linux/mlx.h"
+#include <mlx.h>
+// # include "../minilibx-linux/mlx.h"
 # include <stdbool.h>
 # include <stdio.h>
 # define PI 3.14159265

@@ -8,15 +8,14 @@ SRC = ./MANDATORY/fdf.c ./MANDATORY/controle_keys.c ./MANDATORY/get_coords.c ./M
 	./MANDATORY/rotation_utlize.c get_next_line/get_next_line.c get_next_line/get_next_line_utils.c
 OBJS = $(SRC:.c=.o)
 OBJS_BONUS = $(SRC_BONUS:.c=.o)
-CC = clang
-CFLAGS = -I/usr/include -I/minilibx-linux 
-CFLAGS1 = -g -L/minilibx-linux -L/usr/lib  -lXext -lX11 -lm -lz
-LIBS = -L./libft -lft -L./minilibx-linux -lmlx_Linux -lXext -lX11 -lm -lz
+CC = cc
+CFLAGS = -Wall -Wextra -Werror -Imlx
+LIBS = -L./libft -lft
 
 all : libft $(NAME)
 
 $(NAME) : $(OBJS)
-	@$(CC) $(CFLAGS1) $(OBJS) -o $(NAME) $(LIBS)
+	@$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(OBJS) -o $(NAME) $(LIBS)
 %.o : %.c $(HEADER)
 	@$(CC) $(CFLAGS) -c $< -o $@
 
@@ -26,7 +25,7 @@ libft:
 
 bonus : libft $(NAME_BONUS)
 $(NAME_BONUS) : $(OBJS_BONUS)
-		@$(CC) $(CFLAGS1) $(OBJS_BONUS) -o $(NAME_BONUS) $(LIBS)
+		@$(CC) $(CFLAGS) -lmlx -framework OpenGL -framework AppKit $(OBJS_BONUS) -o $(NAME_BONUS) $(LIBS)
 %.o : %.c $(HEADER_BONUS)
 		@$(CC) $(CFLAGS) -c $< -o $@
 clean :
